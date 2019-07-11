@@ -1,41 +1,36 @@
 <?php
 /**
  * RegistrantIntegrationsApi
- * PHP version 7
+ * PHP version 7.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso\Api;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use GuzzleHttp\ClientInterface;
 use CollingMedia\Lasso\ApiException;
+use GuzzleHttp\Psr7\MultipartStream;
 use CollingMedia\Lasso\Configuration;
 use CollingMedia\Lasso\HeaderSelector;
 use CollingMedia\Lasso\ObjectSerializer;
+use GuzzleHttp\Exception\RequestException;
 
 /**
- * RegistrantIntegrationsApi Class Doc Comment
+ * RegistrantIntegrationsApi Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -80,7 +75,7 @@ class RegistrantIntegrationsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdExternalExternalIdDelete
+     * Operation registrantsRegistrantIdExternalExternalIdDelete.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  string $external_id external_id (required)
@@ -95,7 +90,7 @@ class RegistrantIntegrationsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdExternalExternalIdDeleteWithHttpInfo
+     * Operation registrantsRegistrantIdExternalExternalIdDeleteWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  string $external_id (required)
@@ -138,7 +133,6 @@ class RegistrantIntegrationsApi
             }
 
             return [null, $statusCode, $response->getHeaders()];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -147,9 +141,9 @@ class RegistrantIntegrationsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdExternalExternalIdDeleteAsync
+     * Operation registrantsRegistrantIdExternalExternalIdDeleteAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $external_id (required)
@@ -168,9 +162,9 @@ class RegistrantIntegrationsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdExternalExternalIdDeleteAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdExternalExternalIdDeleteAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $external_id (required)
@@ -207,7 +201,7 @@ class RegistrantIntegrationsApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdExternalExternalIdDelete'
+     * Create request for operation 'registrantsRegistrantIdExternalExternalIdDelete'.
      *
      * @param  string $registrant_id (required)
      * @param  string $external_id (required)
@@ -237,11 +231,10 @@ class RegistrantIntegrationsApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -249,7 +242,7 @@ class RegistrantIntegrationsApi
         // path params
         if ($external_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'externalId' . '}',
+                '{'.'externalId'.'}',
                 ObjectSerializer::toPathValue($external_id),
                 $resourcePath
             );
@@ -283,15 +276,13 @@ class RegistrantIntegrationsApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -316,16 +307,17 @@ class RegistrantIntegrationsApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdIntegrationsDelete
+     * Operation registrantsRegistrantIdIntegrationsDelete.
      *
      * @param  string $registrant_id registrant_id (required)
      *
@@ -339,7 +331,7 @@ class RegistrantIntegrationsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdIntegrationsDeleteWithHttpInfo
+     * Operation registrantsRegistrantIdIntegrationsDeleteWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      *
@@ -381,7 +373,6 @@ class RegistrantIntegrationsApi
             }
 
             return [null, $statusCode, $response->getHeaders()];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -390,9 +381,9 @@ class RegistrantIntegrationsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdIntegrationsDeleteAsync
+     * Operation registrantsRegistrantIdIntegrationsDeleteAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      *
@@ -410,9 +401,9 @@ class RegistrantIntegrationsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdIntegrationsDeleteAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdIntegrationsDeleteAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      *
@@ -448,7 +439,7 @@ class RegistrantIntegrationsApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdIntegrationsDelete'
+     * Create request for operation 'registrantsRegistrantIdIntegrationsDelete'.
      *
      * @param  string $registrant_id (required)
      *
@@ -471,11 +462,10 @@ class RegistrantIntegrationsApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -509,15 +499,13 @@ class RegistrantIntegrationsApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -542,16 +530,17 @@ class RegistrantIntegrationsApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdIntegrationsPost
+     * Operation registrantsRegistrantIdIntegrationsPost.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\ExternalId $external_id external_id (required)
@@ -562,12 +551,13 @@ class RegistrantIntegrationsApi
      */
     public function registrantsRegistrantIdIntegrationsPost($registrant_id, $external_id)
     {
-        list($response) = $this->registrantsRegistrantIdIntegrationsPostWithHttpInfo($registrant_id, $external_id);
+        [$response] = $this->registrantsRegistrantIdIntegrationsPostWithHttpInfo($registrant_id, $external_id);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdIntegrationsPostWithHttpInfo
+     * Operation registrantsRegistrantIdIntegrationsPostWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\ExternalId $external_id (required)
@@ -622,9 +612,8 @@ class RegistrantIntegrationsApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -641,9 +630,9 @@ class RegistrantIntegrationsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdIntegrationsPostAsync
+     * Operation registrantsRegistrantIdIntegrationsPostAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\ExternalId $external_id (required)
@@ -662,9 +651,9 @@ class RegistrantIntegrationsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdIntegrationsPostAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdIntegrationsPostAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\ExternalId $external_id (required)
@@ -694,7 +683,7 @@ class RegistrantIntegrationsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -715,7 +704,7 @@ class RegistrantIntegrationsApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdIntegrationsPost'
+     * Create request for operation 'registrantsRegistrantIdIntegrationsPost'.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\ExternalId $external_id (required)
@@ -745,11 +734,10 @@ class RegistrantIntegrationsApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -786,15 +774,13 @@ class RegistrantIntegrationsApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -819,16 +805,17 @@ class RegistrantIntegrationsApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
      *
      * @throws \RuntimeException on file opening failure
      * @return array of http client options
@@ -838,8 +825,8 @@ class RegistrantIntegrationsApi
         $options = [];
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            if (! $options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

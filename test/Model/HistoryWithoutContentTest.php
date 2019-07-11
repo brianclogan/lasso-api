@@ -1,20 +1,18 @@
 <?php
 /**
- * HistoryWithoutContentTest
+ * HistoryWithoutContentTest.
  *
  * PHP version 7
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
 
 /**
@@ -23,94 +21,92 @@
  * Please update the test case below to test the model.
  */
 
-
 namespace CollingMedia\Lasso;
 
 use PHPUnit\Framework\TestCase;
+
 /**
- * HistoryWithoutContentTest Class Doc Comment
+ * HistoryWithoutContentTest Class Doc Comment.
  *
  * @category    Class
  * @description History tracks communication with the registrant. Various types of history items are supported, e.g. emails, phone call or appointments. The content for history items is limited to the first 200 characters, as emails may grow very large and include embedded content (e.g. images) that makes transferring all history content at once unfeasible. If you need the full content for any given history item, you can request it from the &#x60;self&#x60; link.
- * @package     CollingMedia\Lasso
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class HistoryWithoutContentTest extends TestCase
 {
-
     /**
-     * Setup before running any test case
+     * Setup before running any test case.
      */
     public static function setUpBeforeClass()
     {
     }
 
     /**
-     * Setup before running each test case
+     * Setup before running each test case.
      */
     public function setUp()
     {
     }
 
     /**
-     * Clean up after running each test case
+     * Clean up after running each test case.
      */
     public function tearDown()
     {
     }
 
     /**
-     * Clean up after running all test cases
+     * Clean up after running all test cases.
      */
     public static function tearDownAfterClass()
     {
     }
 
     /**
-     * Test "HistoryWithoutContent"
+     * Test "HistoryWithoutContent".
      */
     public function testHistoryWithoutContent()
     {
     }
 
     /**
-     * Test attribute "type"
+     * Test attribute "type".
      */
     public function testPropertyType()
     {
     }
 
     /**
-     * Test attribute "type_id"
+     * Test attribute "type_id".
      */
     public function testPropertyTypeId()
     {
     }
 
     /**
-     * Test attribute "subject"
+     * Test attribute "subject".
      */
     public function testPropertySubject()
     {
     }
 
     /**
-     * Test attribute "date"
+     * Test attribute "date".
      */
     public function testPropertyDate()
     {
     }
 
     /**
-     * Test attribute "created_by"
+     * Test attribute "created_by".
      */
     public function testPropertyCreatedBy()
     {
     }
 
     /**
-     * Test attribute "_links"
+     * Test attribute "_links".
      */
     public function testPropertyLinks()
     {

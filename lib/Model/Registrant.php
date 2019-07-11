@@ -1,34 +1,29 @@
 <?php
 /**
- * Registrant
+ * Registrant.
  *
  * PHP version 7
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso\Model;
 
-use \ArrayAccess;
-use \CollingMedia\Lasso\ObjectSerializer;
+use ArrayAccess;
+use CollingMedia\Lasso\ObjectSerializer;
 
 /**
- * Registrant Class Doc Comment
+ * Registrant Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -37,17 +32,17 @@ class Registrant implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'Registrant';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'website_tracking' => '\CollingMedia\Lasso\Model\RegistrantWebsiteTracking',
         'exclude_from_traffic' => 'bool',
@@ -60,14 +55,14 @@ class Registrant implements ModelInterface, ArrayAccess
         'secondary_source_type' => '\CollingMedia\Lasso\Model\SecondarySourceType',
         'follow_up_process' => '\CollingMedia\Lasso\Model\FollowUpProcess',
         'assigned_sales_reps' => '\CollingMedia\Lasso\Model\SalesRep[]',
-        'questions' => '\CollingMedia\Lasso\Model\Question[]'
+        'questions' => '\CollingMedia\Lasso\Model\Question[]',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'website_tracking' => null,
         'exclude_from_traffic' => null,
@@ -80,11 +75,11 @@ class Registrant implements ModelInterface, ArrayAccess
         'secondary_source_type' => null,
         'follow_up_process' => null,
         'assigned_sales_reps' => null,
-        'questions' => null
+        'questions' => null,
     ];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
+     * Array of property to type mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -94,7 +89,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
+     * Array of property to format mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -105,7 +100,7 @@ class Registrant implements ModelInterface, ArrayAccess
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
@@ -121,11 +116,11 @@ class Registrant implements ModelInterface, ArrayAccess
         'secondary_source_type' => 'secondarySourceType',
         'follow_up_process' => 'followUpProcess',
         'assigned_sales_reps' => 'assignedSalesReps',
-        'questions' => 'questions'
+        'questions' => 'questions',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -141,11 +136,11 @@ class Registrant implements ModelInterface, ArrayAccess
         'secondary_source_type' => 'setSecondarySourceType',
         'follow_up_process' => 'setFollowUpProcess',
         'assigned_sales_reps' => 'setAssignedSalesReps',
-        'questions' => 'setQuestions'
+        'questions' => 'setQuestions',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -161,12 +156,12 @@ class Registrant implements ModelInterface, ArrayAccess
         'secondary_source_type' => 'getSecondarySourceType',
         'follow_up_process' => 'getFollowUpProcess',
         'assigned_sales_reps' => 'getAssignedSalesReps',
-        'questions' => 'getQuestions'
+        'questions' => 'getQuestions',
     ];
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @return array
      */
@@ -176,7 +171,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @return array
      */
@@ -186,7 +181,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @return array
      */
@@ -205,19 +200,15 @@ class Registrant implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
-
-    
-
     /**
-     * Associative array for storing property values
+     * Associative array for storing property values.
      *
      * @var mixed[]
      */
     protected $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
@@ -252,7 +243,7 @@ class Registrant implements ModelInterface, ArrayAccess
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
@@ -261,9 +252,8 @@ class Registrant implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
-     * Gets website_tracking
+     * Gets website_tracking.
      *
      * @return \CollingMedia\Lasso\Model\RegistrantWebsiteTracking
      */
@@ -273,7 +263,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets website_tracking
+     * Sets website_tracking.
      *
      * @param \CollingMedia\Lasso\Model\RegistrantWebsiteTracking $website_tracking website_tracking
      *
@@ -287,7 +277,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets exclude_from_traffic
+     * Gets exclude_from_traffic.
      *
      * @return bool
      */
@@ -297,7 +287,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets exclude_from_traffic
+     * Sets exclude_from_traffic.
      *
      * @param bool $exclude_from_traffic Exclude this registrant from traffic reports
      *
@@ -311,7 +301,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets registration_date
+     * Gets registration_date.
      *
      * @return string
      */
@@ -321,7 +311,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets registration_date
+     * Sets registration_date.
      *
      * @param string $registration_date When the registrant was created in the system. Dates are in ISO 8601 UTC format.
      *
@@ -335,7 +325,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets external_id
+     * Gets external_id.
      *
      * @return string
      */
@@ -345,7 +335,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets external_id
+     * Sets external_id.
      *
      * @param string $external_id identifies this registrant in an externally linked system. The external system is determined from the api key
      *
@@ -359,7 +349,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets external_duplicate_ids
+     * Gets external_duplicate_ids.
      *
      * @return string[]
      */
@@ -369,7 +359,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets external_duplicate_ids
+     * Sets external_duplicate_ids.
      *
      * @param string[] $external_duplicate_ids a registrant that has been merged with another will inherit the other's externalId. This list keeps track of all other externalId's linked to this single registrant
      *
@@ -383,7 +373,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets person
+     * Gets person.
      *
      * @return \CollingMedia\Lasso\Model\RegistrantPersonalInfo
      */
@@ -393,7 +383,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets person
+     * Sets person.
      *
      * @param \CollingMedia\Lasso\Model\RegistrantPersonalInfo $person person
      *
@@ -407,7 +397,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets rating
+     * Gets rating.
      *
      * @return \CollingMedia\Lasso\Model\Rating
      */
@@ -417,7 +407,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets rating
+     * Sets rating.
      *
      * @param \CollingMedia\Lasso\Model\Rating $rating rating
      *
@@ -431,7 +421,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets source_type
+     * Gets source_type.
      *
      * @return \CollingMedia\Lasso\Model\SourceType
      */
@@ -441,7 +431,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets source_type
+     * Sets source_type.
      *
      * @param \CollingMedia\Lasso\Model\SourceType $source_type source_type
      *
@@ -455,7 +445,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets secondary_source_type
+     * Gets secondary_source_type.
      *
      * @return \CollingMedia\Lasso\Model\SecondarySourceType
      */
@@ -465,7 +455,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets secondary_source_type
+     * Sets secondary_source_type.
      *
      * @param \CollingMedia\Lasso\Model\SecondarySourceType $secondary_source_type secondary_source_type
      *
@@ -479,7 +469,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets follow_up_process
+     * Gets follow_up_process.
      *
      * @return \CollingMedia\Lasso\Model\FollowUpProcess
      */
@@ -489,7 +479,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets follow_up_process
+     * Sets follow_up_process.
      *
      * @param \CollingMedia\Lasso\Model\FollowUpProcess $follow_up_process follow_up_process
      *
@@ -503,7 +493,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets assigned_sales_reps
+     * Gets assigned_sales_reps.
      *
      * @return \CollingMedia\Lasso\Model\SalesRep[]
      */
@@ -513,7 +503,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets assigned_sales_reps
+     * Sets assigned_sales_reps.
      *
      * @param \CollingMedia\Lasso\Model\SalesRep[] $assigned_sales_reps assigned_sales_reps
      *
@@ -527,7 +517,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets questions
+     * Gets questions.
      *
      * @return \CollingMedia\Lasso\Model\Question[]
      */
@@ -537,7 +527,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets questions
+     * Sets questions.
      *
      * @param \CollingMedia\Lasso\Model\Question[] $questions questions
      *
@@ -549,12 +539,13 @@ class Registrant implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -564,7 +555,7 @@ class Registrant implements ModelInterface, ArrayAccess
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return mixed
      */
@@ -576,7 +567,7 @@ class Registrant implements ModelInterface, ArrayAccess
     /**
      * Sets value based on offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      * @param mixed   $value  Value to be set
      *
      * @return void
@@ -593,7 +584,7 @@ class Registrant implements ModelInterface, ArrayAccess
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return void
      */
@@ -603,7 +594,7 @@ class Registrant implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets the string presentation of the object
+     * Gets the string presentation of the object.
      *
      * @return string
      */
@@ -619,5 +610,3 @@ class Registrant implements ModelInterface, ArrayAccess
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

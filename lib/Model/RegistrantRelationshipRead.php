@@ -1,35 +1,30 @@
 <?php
 /**
- * RegistrantRelationshipRead
+ * RegistrantRelationshipRead.
  *
  * PHP version 7
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso\Model;
 
-use \ArrayAccess;
-use \CollingMedia\Lasso\ObjectSerializer;
+use ArrayAccess;
+use CollingMedia\Lasso\ObjectSerializer;
 
 /**
- * RegistrantRelationshipRead Class Doc Comment
+ * RegistrantRelationshipRead Class Doc Comment.
  *
  * @category Class
  * @description Contains a registrant&#39;s relationships
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -38,42 +33,42 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'RegistrantRelationshipRead';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'relationship_id' => 'string',
         'registrant_id' => 'string',
         'relationship' => 'string',
         'reverse' => 'string',
         'first_name' => 'string',
-        'last_name' => 'string'
+        'last_name' => 'string',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'relationship_id' => null,
         'registrant_id' => null,
         'relationship' => null,
         'reverse' => null,
         'first_name' => null,
-        'last_name' => null
+        'last_name' => null,
     ];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
+     * Array of property to type mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -83,7 +78,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
+     * Array of property to format mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -94,7 +89,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
@@ -104,11 +99,11 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
         'relationship' => 'relationship',
         'reverse' => 'reverse',
         'first_name' => 'firstName',
-        'last_name' => 'lastName'
+        'last_name' => 'lastName',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -118,11 +113,11 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
         'relationship' => 'setRelationship',
         'reverse' => 'setReverse',
         'first_name' => 'setFirstName',
-        'last_name' => 'setLastName'
+        'last_name' => 'setLastName',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -132,12 +127,12 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
         'relationship' => 'getRelationship',
         'reverse' => 'getReverse',
         'first_name' => 'getFirstName',
-        'last_name' => 'getLastName'
+        'last_name' => 'getLastName',
     ];
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @return array
      */
@@ -147,7 +142,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @return array
      */
@@ -157,7 +152,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @return array
      */
@@ -176,19 +171,15 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
-
-    
-
     /**
-     * Associative array for storing property values
+     * Associative array for storing property values.
      *
      * @var mixed[]
      */
     protected $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
@@ -217,7 +208,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
@@ -226,9 +217,8 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
-     * Gets relationship_id
+     * Gets relationship_id.
      *
      * @return string
      */
@@ -238,7 +228,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets relationship_id
+     * Sets relationship_id.
      *
      * @param string $relationship_id relationship_id
      *
@@ -252,7 +242,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets registrant_id
+     * Gets registrant_id.
      *
      * @return string
      */
@@ -262,7 +252,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets registrant_id
+     * Sets registrant_id.
      *
      * @param string $registrant_id registrant_id
      *
@@ -276,7 +266,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets relationship
+     * Gets relationship.
      *
      * @return string
      */
@@ -286,7 +276,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets relationship
+     * Sets relationship.
      *
      * @param string $relationship relationship
      *
@@ -300,7 +290,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets reverse
+     * Gets reverse.
      *
      * @return string
      */
@@ -310,7 +300,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets reverse
+     * Sets reverse.
      *
      * @param string $reverse reverse
      *
@@ -324,7 +314,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets first_name
+     * Gets first_name.
      *
      * @return string
      */
@@ -334,7 +324,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets first_name
+     * Sets first_name.
      *
      * @param string $first_name first_name
      *
@@ -348,7 +338,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets last_name
+     * Gets last_name.
      *
      * @return string
      */
@@ -358,7 +348,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets last_name
+     * Sets last_name.
      *
      * @param string $last_name last_name
      *
@@ -370,12 +360,13 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -385,7 +376,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return mixed
      */
@@ -397,7 +388,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     /**
      * Sets value based on offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      * @param mixed   $value  Value to be set
      *
      * @return void
@@ -414,7 +405,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return void
      */
@@ -424,7 +415,7 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets the string presentation of the object
+     * Gets the string presentation of the object.
      *
      * @return string
      */
@@ -440,5 +431,3 @@ class RegistrantRelationshipRead implements ModelInterface, ArrayAccess
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

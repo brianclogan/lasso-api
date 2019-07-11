@@ -1,51 +1,47 @@
 <?php
 /**
- * RegistrantRead
+ * RegistrantRead.
  *
  * PHP version 7
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
 
-
-
 namespace CollingMedia\Lasso\Model;
-use \CollingMedia\Lasso\ObjectSerializer;
+
+use CollingMedia\Lasso\ObjectSerializer;
 
 /**
- * RegistrantRead Class Doc Comment
+ * RegistrantRead Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
-class RegistrantRead extends Registrant 
+class RegistrantRead extends Registrant
 {
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'RegistrantRead';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'registrant_id' => 'string',
         'project' => '\CollingMedia\Lasso\Model\Project',
@@ -55,14 +51,14 @@ class RegistrantRead extends Registrant
         'history' => '\CollingMedia\Lasso\Model\HistoryRead[]',
         'notes' => '\CollingMedia\Lasso\Model\RegistrantNoteRead[]',
         'relationships' => '\CollingMedia\Lasso\Model\RegistrantRelationshipRead[]',
-        '_links' => '\CollingMedia\Lasso\Model\RegistrantWriteLinks'
+        '_links' => '\CollingMedia\Lasso\Model\RegistrantWriteLinks',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'registrant_id' => null,
         'project' => null,
@@ -72,11 +68,11 @@ class RegistrantRead extends Registrant
         'history' => null,
         'notes' => null,
         'relationships' => null,
-        '_links' => null
+        '_links' => null,
     ];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
+     * Array of property to type mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -86,7 +82,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
+     * Array of property to format mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -97,7 +93,7 @@ class RegistrantRead extends Registrant
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
@@ -110,11 +106,11 @@ class RegistrantRead extends Registrant
         'history' => 'history',
         'notes' => 'notes',
         'relationships' => 'relationships',
-        '_links' => '_links'
+        '_links' => '_links',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -127,11 +123,11 @@ class RegistrantRead extends Registrant
         'history' => 'setHistory',
         'notes' => 'setNotes',
         'relationships' => 'setRelationships',
-        '_links' => 'setLinks'
+        '_links' => 'setLinks',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -144,12 +140,12 @@ class RegistrantRead extends Registrant
         'history' => 'getHistory',
         'notes' => 'getNotes',
         'relationships' => 'getRelationships',
-        '_links' => 'getLinks'
+        '_links' => 'getLinks',
     ];
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @return array
      */
@@ -159,7 +155,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @return array
      */
@@ -169,7 +165,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @return array
      */
@@ -188,13 +184,8 @@ class RegistrantRead extends Registrant
         return self::$swaggerModelName;
     }
 
-    
-
-    
-
-
     /**
-     * Constructor
+     * Constructor.
      *
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
@@ -228,7 +219,7 @@ class RegistrantRead extends Registrant
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
@@ -237,9 +228,8 @@ class RegistrantRead extends Registrant
         return count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
-     * Gets registrant_id
+     * Gets registrant_id.
      *
      * @return string
      */
@@ -249,7 +239,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Sets registrant_id
+     * Sets registrant_id.
      *
      * @param string $registrant_id registrant_id
      *
@@ -263,7 +253,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Gets project
+     * Gets project.
      *
      * @return \CollingMedia\Lasso\Model\Project
      */
@@ -273,7 +263,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Sets project
+     * Sets project.
      *
      * @param \CollingMedia\Lasso\Model\Project $project project
      *
@@ -287,7 +277,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Gets emails
+     * Gets emails.
      *
      * @return \CollingMedia\Lasso\Model\EmailRead[]
      */
@@ -297,7 +287,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Sets emails
+     * Sets emails.
      *
      * @param \CollingMedia\Lasso\Model\EmailRead[] $emails emails
      *
@@ -311,7 +301,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Gets phones
+     * Gets phones.
      *
      * @return \CollingMedia\Lasso\Model\PhoneRead[]
      */
@@ -321,7 +311,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Sets phones
+     * Sets phones.
      *
      * @param \CollingMedia\Lasso\Model\PhoneRead[] $phones phones
      *
@@ -335,7 +325,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Gets addresses
+     * Gets addresses.
      *
      * @return \CollingMedia\Lasso\Model\AddressRead[]
      */
@@ -345,7 +335,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Sets addresses
+     * Sets addresses.
      *
      * @param \CollingMedia\Lasso\Model\AddressRead[] $addresses addresses
      *
@@ -359,7 +349,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Gets history
+     * Gets history.
      *
      * @return \CollingMedia\Lasso\Model\HistoryRead[]
      */
@@ -369,7 +359,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Sets history
+     * Sets history.
      *
      * @param \CollingMedia\Lasso\Model\HistoryRead[] $history history
      *
@@ -383,7 +373,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Gets notes
+     * Gets notes.
      *
      * @return \CollingMedia\Lasso\Model\RegistrantNoteRead[]
      */
@@ -393,7 +383,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Sets notes
+     * Sets notes.
      *
      * @param \CollingMedia\Lasso\Model\RegistrantNoteRead[] $notes notes
      *
@@ -407,7 +397,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Gets relationships
+     * Gets relationships.
      *
      * @return \CollingMedia\Lasso\Model\RegistrantRelationshipRead[]
      */
@@ -417,7 +407,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Sets relationships
+     * Sets relationships.
      *
      * @param \CollingMedia\Lasso\Model\RegistrantRelationshipRead[] $relationships relationships
      *
@@ -431,7 +421,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Gets _links
+     * Gets _links.
      *
      * @return \CollingMedia\Lasso\Model\RegistrantWriteLinks
      */
@@ -441,7 +431,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Sets _links
+     * Sets _links.
      *
      * @param \CollingMedia\Lasso\Model\RegistrantWriteLinks $_links _links
      *
@@ -453,12 +443,13 @@ class RegistrantRead extends Registrant
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -468,7 +459,7 @@ class RegistrantRead extends Registrant
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return mixed
      */
@@ -480,7 +471,7 @@ class RegistrantRead extends Registrant
     /**
      * Sets value based on offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      * @param mixed   $value  Value to be set
      *
      * @return void
@@ -497,7 +488,7 @@ class RegistrantRead extends Registrant
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return void
      */
@@ -507,7 +498,7 @@ class RegistrantRead extends Registrant
     }
 
     /**
-     * Gets the string presentation of the object
+     * Gets the string presentation of the object.
      *
      * @return string
      */
@@ -523,5 +514,3 @@ class RegistrantRead extends Registrant
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

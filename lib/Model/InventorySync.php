@@ -1,51 +1,47 @@
 <?php
 /**
- * InventorySync
+ * InventorySync.
  *
  * PHP version 7
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
 
-
-
 namespace CollingMedia\Lasso\Model;
-use \CollingMedia\Lasso\ObjectSerializer;
+
+use CollingMedia\Lasso\ObjectSerializer;
 
 /**
- * InventorySync Class Doc Comment
+ * InventorySync Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
-class InventorySync extends Inventory 
+class InventorySync extends Inventory
 {
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'InventorySync';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'revisions' => '\CollingMedia\Lasso\Model\PricingRevision[]',
         'notes' => '\CollingMedia\Lasso\Model\Note[]',
@@ -57,14 +53,14 @@ class InventorySync extends Inventory
         'parking_stalls' => '\CollingMedia\Lasso\Model\ParkingStall[]',
         'sales_reps' => 'string[]',
         'purchasers' => 'string[]',
-        'options' => '\CollingMedia\Lasso\Model\Option[]'
+        'options' => '\CollingMedia\Lasso\Model\Option[]',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'revisions' => null,
         'notes' => null,
@@ -76,11 +72,11 @@ class InventorySync extends Inventory
         'parking_stalls' => null,
         'sales_reps' => null,
         'purchasers' => null,
-        'options' => null
+        'options' => null,
     ];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
+     * Array of property to type mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -90,7 +86,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
+     * Array of property to format mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -101,7 +97,7 @@ class InventorySync extends Inventory
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
@@ -116,11 +112,11 @@ class InventorySync extends Inventory
         'parking_stalls' => 'parkingStalls',
         'sales_reps' => 'salesReps',
         'purchasers' => 'purchasers',
-        'options' => 'options'
+        'options' => 'options',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -135,11 +131,11 @@ class InventorySync extends Inventory
         'parking_stalls' => 'setParkingStalls',
         'sales_reps' => 'setSalesReps',
         'purchasers' => 'setPurchasers',
-        'options' => 'setOptions'
+        'options' => 'setOptions',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -154,12 +150,12 @@ class InventorySync extends Inventory
         'parking_stalls' => 'getParkingStalls',
         'sales_reps' => 'getSalesReps',
         'purchasers' => 'getPurchasers',
-        'options' => 'getOptions'
+        'options' => 'getOptions',
     ];
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @return array
      */
@@ -169,7 +165,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @return array
      */
@@ -179,7 +175,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @return array
      */
@@ -198,13 +194,8 @@ class InventorySync extends Inventory
         return self::$swaggerModelName;
     }
 
-    
-
-    
-
-
     /**
-     * Constructor
+     * Constructor.
      *
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
@@ -240,7 +231,7 @@ class InventorySync extends Inventory
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
@@ -249,9 +240,8 @@ class InventorySync extends Inventory
         return count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
-     * Gets revisions
+     * Gets revisions.
      *
      * @return \CollingMedia\Lasso\Model\PricingRevision[]
      */
@@ -261,7 +251,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Sets revisions
+     * Sets revisions.
      *
      * @param \CollingMedia\Lasso\Model\PricingRevision[] $revisions revisions
      *
@@ -275,7 +265,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Gets notes
+     * Gets notes.
      *
      * @return \CollingMedia\Lasso\Model\Note[]
      */
@@ -285,7 +275,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Sets notes
+     * Sets notes.
      *
      * @param \CollingMedia\Lasso\Model\Note[] $notes notes
      *
@@ -299,7 +289,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Gets subjects
+     * Gets subjects.
      *
      * @return \CollingMedia\Lasso\Model\Subject[]
      */
@@ -309,7 +299,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Sets subjects
+     * Sets subjects.
      *
      * @param \CollingMedia\Lasso\Model\Subject[] $subjects subjects
      *
@@ -323,7 +313,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Gets deposits
+     * Gets deposits.
      *
      * @return \CollingMedia\Lasso\Model\Deposit[]
      */
@@ -333,7 +323,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Sets deposits
+     * Sets deposits.
      *
      * @param \CollingMedia\Lasso\Model\Deposit[] $deposits deposits
      *
@@ -347,7 +337,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Gets realtors
+     * Gets realtors.
      *
      * @return \CollingMedia\Lasso\Model\Realtor[]
      */
@@ -357,7 +347,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Sets realtors
+     * Sets realtors.
      *
      * @param \CollingMedia\Lasso\Model\Realtor[] $realtors Realtors associated with the inventory. Only a realtor's compensation may be updated, all non compensation fields will be ignored.
      *
@@ -371,7 +361,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Gets bicycle_lockers
+     * Gets bicycle_lockers.
      *
      * @return \CollingMedia\Lasso\Model\BicycleLocker[]
      */
@@ -381,7 +371,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Sets bicycle_lockers
+     * Sets bicycle_lockers.
      *
      * @param \CollingMedia\Lasso\Model\BicycleLocker[] $bicycle_lockers bicycle_lockers
      *
@@ -395,7 +385,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Gets storage_lockers
+     * Gets storage_lockers.
      *
      * @return \CollingMedia\Lasso\Model\StorageLocker[]
      */
@@ -405,7 +395,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Sets storage_lockers
+     * Sets storage_lockers.
      *
      * @param \CollingMedia\Lasso\Model\StorageLocker[] $storage_lockers storage_lockers
      *
@@ -419,7 +409,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Gets parking_stalls
+     * Gets parking_stalls.
      *
      * @return \CollingMedia\Lasso\Model\ParkingStall[]
      */
@@ -429,7 +419,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Sets parking_stalls
+     * Sets parking_stalls.
      *
      * @param \CollingMedia\Lasso\Model\ParkingStall[] $parking_stalls parking_stalls
      *
@@ -443,7 +433,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Gets sales_reps
+     * Gets sales_reps.
      *
      * @return string[]
      */
@@ -453,7 +443,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Sets sales_reps
+     * Sets sales_reps.
      *
      * @param string[] $sales_reps sales_reps
      *
@@ -467,7 +457,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Gets purchasers
+     * Gets purchasers.
      *
      * @return string[]
      */
@@ -477,7 +467,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Sets purchasers
+     * Sets purchasers.
      *
      * @param string[] $purchasers List of registrant IDs to associate as purchasers with this inventory. Use the registrant create route to create a registrant if it does not exist yet.
      *
@@ -491,7 +481,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Gets options
+     * Gets options.
      *
      * @return \CollingMedia\Lasso\Model\Option[]
      */
@@ -501,7 +491,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Sets options
+     * Sets options.
      *
      * @param \CollingMedia\Lasso\Model\Option[] $options options
      *
@@ -513,12 +503,13 @@ class InventorySync extends Inventory
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -528,7 +519,7 @@ class InventorySync extends Inventory
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return mixed
      */
@@ -540,7 +531,7 @@ class InventorySync extends Inventory
     /**
      * Sets value based on offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      * @param mixed   $value  Value to be set
      *
      * @return void
@@ -557,7 +548,7 @@ class InventorySync extends Inventory
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return void
      */
@@ -567,7 +558,7 @@ class InventorySync extends Inventory
     }
 
     /**
-     * Gets the string presentation of the object
+     * Gets the string presentation of the object.
      *
      * @return string
      */
@@ -583,5 +574,3 @@ class InventorySync extends Inventory
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

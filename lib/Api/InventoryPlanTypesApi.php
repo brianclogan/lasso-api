@@ -1,41 +1,36 @@
 <?php
 /**
  * InventoryPlanTypesApi
- * PHP version 7
+ * PHP version 7.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso\Api;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use GuzzleHttp\ClientInterface;
 use CollingMedia\Lasso\ApiException;
+use GuzzleHttp\Psr7\MultipartStream;
 use CollingMedia\Lasso\Configuration;
 use CollingMedia\Lasso\HeaderSelector;
 use CollingMedia\Lasso\ObjectSerializer;
+use GuzzleHttp\Exception\RequestException;
 
 /**
- * InventoryPlanTypesApi Class Doc Comment
+ * InventoryPlanTypesApi Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -80,7 +75,7 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Operation inventoryInventoryIdPlansGet
+     * Operation inventoryInventoryIdPlansGet.
      *
      * @param  string $inventory_id inventory_id (required)
      *
@@ -90,12 +85,13 @@ class InventoryPlanTypesApi
      */
     public function inventoryInventoryIdPlansGet($inventory_id)
     {
-        list($response) = $this->inventoryInventoryIdPlansGetWithHttpInfo($inventory_id);
+        [$response] = $this->inventoryInventoryIdPlansGetWithHttpInfo($inventory_id);
+
         return $response;
     }
 
     /**
-     * Operation inventoryInventoryIdPlansGetWithHttpInfo
+     * Operation inventoryInventoryIdPlansGetWithHttpInfo.
      *
      * @param  string $inventory_id (required)
      *
@@ -149,9 +145,8 @@ class InventoryPlanTypesApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -184,9 +179,9 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Operation inventoryInventoryIdPlansGetAsync
+     * Operation inventoryInventoryIdPlansGetAsync.
      *
-     * 
+     *
      *
      * @param  string $inventory_id (required)
      *
@@ -204,9 +199,9 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Operation inventoryInventoryIdPlansGetAsyncWithHttpInfo
+     * Operation inventoryInventoryIdPlansGetAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $inventory_id (required)
      *
@@ -235,7 +230,7 @@ class InventoryPlanTypesApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -256,7 +251,7 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Create request for operation 'inventoryInventoryIdPlansGet'
+     * Create request for operation 'inventoryInventoryIdPlansGet'.
      *
      * @param  string $inventory_id (required)
      *
@@ -279,11 +274,10 @@ class InventoryPlanTypesApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($inventory_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'inventoryId' . '}',
+                '{'.'inventoryId'.'}',
                 ObjectSerializer::toPathValue($inventory_id),
                 $resourcePath
             );
@@ -317,15 +311,13 @@ class InventoryPlanTypesApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -350,16 +342,17 @@ class InventoryPlanTypesApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation inventoryInventoryIdPlansPut
+     * Operation inventoryInventoryIdPlansPut.
      *
      * @param  string $inventory_id inventory_id (required)
      * @param  \CollingMedia\Lasso\Model\InventoryPlanTypeWrite $plan_type plan_type (required)
@@ -370,12 +363,13 @@ class InventoryPlanTypesApi
      */
     public function inventoryInventoryIdPlansPut($inventory_id, $plan_type)
     {
-        list($response) = $this->inventoryInventoryIdPlansPutWithHttpInfo($inventory_id, $plan_type);
+        [$response] = $this->inventoryInventoryIdPlansPutWithHttpInfo($inventory_id, $plan_type);
+
         return $response;
     }
 
     /**
-     * Operation inventoryInventoryIdPlansPutWithHttpInfo
+     * Operation inventoryInventoryIdPlansPutWithHttpInfo.
      *
      * @param  string $inventory_id (required)
      * @param  \CollingMedia\Lasso\Model\InventoryPlanTypeWrite $plan_type (required)
@@ -430,9 +424,8 @@ class InventoryPlanTypesApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -465,9 +458,9 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Operation inventoryInventoryIdPlansPutAsync
+     * Operation inventoryInventoryIdPlansPutAsync.
      *
-     * 
+     *
      *
      * @param  string $inventory_id (required)
      * @param  \CollingMedia\Lasso\Model\InventoryPlanTypeWrite $plan_type (required)
@@ -486,9 +479,9 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Operation inventoryInventoryIdPlansPutAsyncWithHttpInfo
+     * Operation inventoryInventoryIdPlansPutAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $inventory_id (required)
      * @param  \CollingMedia\Lasso\Model\InventoryPlanTypeWrite $plan_type (required)
@@ -518,7 +511,7 @@ class InventoryPlanTypesApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -539,7 +532,7 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Create request for operation 'inventoryInventoryIdPlansPut'
+     * Create request for operation 'inventoryInventoryIdPlansPut'.
      *
      * @param  string $inventory_id (required)
      * @param  \CollingMedia\Lasso\Model\InventoryPlanTypeWrite $plan_type (required)
@@ -569,11 +562,10 @@ class InventoryPlanTypesApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($inventory_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'inventoryId' . '}',
+                '{'.'inventoryId'.'}',
                 ObjectSerializer::toPathValue($inventory_id),
                 $resourcePath
             );
@@ -610,15 +602,13 @@ class InventoryPlanTypesApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -643,16 +633,17 @@ class InventoryPlanTypesApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation inventoryPlansGet
+     * Operation inventoryPlansGet.
      *
      *
      * @throws \CollingMedia\Lasso\ApiException on non-2xx response
@@ -661,12 +652,13 @@ class InventoryPlanTypesApi
      */
     public function inventoryPlansGet()
     {
-        list($response) = $this->inventoryPlansGetWithHttpInfo();
+        [$response] = $this->inventoryPlansGetWithHttpInfo();
+
         return $response;
     }
 
     /**
-     * Operation inventoryPlansGetWithHttpInfo
+     * Operation inventoryPlansGetWithHttpInfo.
      *
      *
      * @throws \CollingMedia\Lasso\ApiException on non-2xx response
@@ -719,9 +711,8 @@ class InventoryPlanTypesApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -746,9 +737,9 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Operation inventoryPlansGetAsync
+     * Operation inventoryPlansGetAsync.
      *
-     * 
+     *
      *
      *
      * @throws \InvalidArgumentException
@@ -765,9 +756,9 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Operation inventoryPlansGetAsyncWithHttpInfo
+     * Operation inventoryPlansGetAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      *
      * @throws \InvalidArgumentException
@@ -795,7 +786,7 @@ class InventoryPlanTypesApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -816,7 +807,7 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Create request for operation 'inventoryPlansGet'
+     * Create request for operation 'inventoryPlansGet'.
      *
      *
      * @throws \InvalidArgumentException
@@ -824,15 +815,12 @@ class InventoryPlanTypesApi
      */
     protected function inventoryPlansGetRequest()
     {
-
         $resourcePath = '/inventory/plans';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // body params
         $_tempBody = null;
@@ -862,15 +850,13 @@ class InventoryPlanTypesApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -895,16 +881,17 @@ class InventoryPlanTypesApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation inventoryPlansPlanTypeIdGet
+     * Operation inventoryPlansPlanTypeIdGet.
      *
      * @param  string $plan_type_id plan_type_id (required)
      *
@@ -914,12 +901,13 @@ class InventoryPlanTypesApi
      */
     public function inventoryPlansPlanTypeIdGet($plan_type_id)
     {
-        list($response) = $this->inventoryPlansPlanTypeIdGetWithHttpInfo($plan_type_id);
+        [$response] = $this->inventoryPlansPlanTypeIdGetWithHttpInfo($plan_type_id);
+
         return $response;
     }
 
     /**
-     * Operation inventoryPlansPlanTypeIdGetWithHttpInfo
+     * Operation inventoryPlansPlanTypeIdGetWithHttpInfo.
      *
      * @param  string $plan_type_id (required)
      *
@@ -973,9 +961,8 @@ class InventoryPlanTypesApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1000,9 +987,9 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Operation inventoryPlansPlanTypeIdGetAsync
+     * Operation inventoryPlansPlanTypeIdGetAsync.
      *
-     * 
+     *
      *
      * @param  string $plan_type_id (required)
      *
@@ -1020,9 +1007,9 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Operation inventoryPlansPlanTypeIdGetAsyncWithHttpInfo
+     * Operation inventoryPlansPlanTypeIdGetAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $plan_type_id (required)
      *
@@ -1051,7 +1038,7 @@ class InventoryPlanTypesApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -1072,7 +1059,7 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Create request for operation 'inventoryPlansPlanTypeIdGet'
+     * Create request for operation 'inventoryPlansPlanTypeIdGet'.
      *
      * @param  string $plan_type_id (required)
      *
@@ -1095,11 +1082,10 @@ class InventoryPlanTypesApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($plan_type_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'planTypeId' . '}',
+                '{'.'planTypeId'.'}',
                 ObjectSerializer::toPathValue($plan_type_id),
                 $resourcePath
             );
@@ -1133,15 +1119,13 @@ class InventoryPlanTypesApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -1166,16 +1150,17 @@ class InventoryPlanTypesApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation inventoryPlansPlanTypeIdPut
+     * Operation inventoryPlansPlanTypeIdPut.
      *
      * @param  string $plan_type_id plan_type_id (required)
      * @param  \CollingMedia\Lasso\Model\PlanTypeWrite $plan_type plan_type (required)
@@ -1186,12 +1171,13 @@ class InventoryPlanTypesApi
      */
     public function inventoryPlansPlanTypeIdPut($plan_type_id, $plan_type)
     {
-        list($response) = $this->inventoryPlansPlanTypeIdPutWithHttpInfo($plan_type_id, $plan_type);
+        [$response] = $this->inventoryPlansPlanTypeIdPutWithHttpInfo($plan_type_id, $plan_type);
+
         return $response;
     }
 
     /**
-     * Operation inventoryPlansPlanTypeIdPutWithHttpInfo
+     * Operation inventoryPlansPlanTypeIdPutWithHttpInfo.
      *
      * @param  string $plan_type_id (required)
      * @param  \CollingMedia\Lasso\Model\PlanTypeWrite $plan_type (required)
@@ -1246,9 +1232,8 @@ class InventoryPlanTypesApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1273,9 +1258,9 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Operation inventoryPlansPlanTypeIdPutAsync
+     * Operation inventoryPlansPlanTypeIdPutAsync.
      *
-     * 
+     *
      *
      * @param  string $plan_type_id (required)
      * @param  \CollingMedia\Lasso\Model\PlanTypeWrite $plan_type (required)
@@ -1294,9 +1279,9 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Operation inventoryPlansPlanTypeIdPutAsyncWithHttpInfo
+     * Operation inventoryPlansPlanTypeIdPutAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $plan_type_id (required)
      * @param  \CollingMedia\Lasso\Model\PlanTypeWrite $plan_type (required)
@@ -1326,7 +1311,7 @@ class InventoryPlanTypesApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -1347,7 +1332,7 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Create request for operation 'inventoryPlansPlanTypeIdPut'
+     * Create request for operation 'inventoryPlansPlanTypeIdPut'.
      *
      * @param  string $plan_type_id (required)
      * @param  \CollingMedia\Lasso\Model\PlanTypeWrite $plan_type (required)
@@ -1377,11 +1362,10 @@ class InventoryPlanTypesApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($plan_type_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'planTypeId' . '}',
+                '{'.'planTypeId'.'}',
                 ObjectSerializer::toPathValue($plan_type_id),
                 $resourcePath
             );
@@ -1418,15 +1402,13 @@ class InventoryPlanTypesApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -1451,16 +1433,17 @@ class InventoryPlanTypesApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation inventoryPlansPost
+     * Operation inventoryPlansPost.
      *
      * @param  \CollingMedia\Lasso\Model\PlanTypeWrite $plan_type plan_type (required)
      *
@@ -1470,12 +1453,13 @@ class InventoryPlanTypesApi
      */
     public function inventoryPlansPost($plan_type)
     {
-        list($response) = $this->inventoryPlansPostWithHttpInfo($plan_type);
+        [$response] = $this->inventoryPlansPostWithHttpInfo($plan_type);
+
         return $response;
     }
 
     /**
-     * Operation inventoryPlansPostWithHttpInfo
+     * Operation inventoryPlansPostWithHttpInfo.
      *
      * @param  \CollingMedia\Lasso\Model\PlanTypeWrite $plan_type (required)
      *
@@ -1529,9 +1513,8 @@ class InventoryPlanTypesApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -1556,9 +1539,9 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Operation inventoryPlansPostAsync
+     * Operation inventoryPlansPostAsync.
      *
-     * 
+     *
      *
      * @param  \CollingMedia\Lasso\Model\PlanTypeWrite $plan_type (required)
      *
@@ -1576,9 +1559,9 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Operation inventoryPlansPostAsyncWithHttpInfo
+     * Operation inventoryPlansPostAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  \CollingMedia\Lasso\Model\PlanTypeWrite $plan_type (required)
      *
@@ -1607,7 +1590,7 @@ class InventoryPlanTypesApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -1628,7 +1611,7 @@ class InventoryPlanTypesApi
     }
 
     /**
-     * Create request for operation 'inventoryPlansPost'
+     * Create request for operation 'inventoryPlansPost'.
      *
      * @param  \CollingMedia\Lasso\Model\PlanTypeWrite $plan_type (required)
      *
@@ -1650,8 +1633,6 @@ class InventoryPlanTypesApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // body params
         $_tempBody = null;
@@ -1684,15 +1665,13 @@ class InventoryPlanTypesApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -1717,16 +1696,17 @@ class InventoryPlanTypesApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
      *
      * @throws \RuntimeException on file opening failure
      * @return array of http client options
@@ -1736,8 +1716,8 @@ class InventoryPlanTypesApi
         $options = [];
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            if (! $options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

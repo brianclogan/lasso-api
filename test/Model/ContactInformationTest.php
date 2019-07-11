@@ -1,20 +1,18 @@
 <?php
 /**
- * ContactInformationTest
+ * ContactInformationTest.
  *
  * PHP version 7
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
 
 /**
@@ -23,136 +21,134 @@
  * Please update the test case below to test the model.
  */
 
-
 namespace CollingMedia\Lasso;
 
 use PHPUnit\Framework\TestCase;
+
 /**
- * ContactInformationTest Class Doc Comment
+ * ContactInformationTest Class Doc Comment.
  *
  * @category    Class
  * @description ContactInformation
- * @package     CollingMedia\Lasso
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
 class ContactInformationTest extends TestCase
 {
-
     /**
-     * Setup before running any test case
+     * Setup before running any test case.
      */
     public static function setUpBeforeClass()
     {
     }
 
     /**
-     * Setup before running each test case
+     * Setup before running each test case.
      */
     public function setUp()
     {
     }
 
     /**
-     * Clean up after running each test case
+     * Clean up after running each test case.
      */
     public function tearDown()
     {
     }
 
     /**
-     * Clean up after running all test cases
+     * Clean up after running all test cases.
      */
     public static function tearDownAfterClass()
     {
     }
 
     /**
-     * Test "ContactInformation"
+     * Test "ContactInformation".
      */
     public function testContactInformation()
     {
     }
 
     /**
-     * Test attribute "personal_id"
+     * Test attribute "personal_id".
      */
     public function testPropertyPersonalId()
     {
     }
 
     /**
-     * Test attribute "name_title"
+     * Test attribute "name_title".
      */
     public function testPropertyNameTitle()
     {
     }
 
     /**
-     * Test attribute "first_name"
+     * Test attribute "first_name".
      */
     public function testPropertyFirstName()
     {
     }
 
     /**
-     * Test attribute "last_name"
+     * Test attribute "last_name".
      */
     public function testPropertyLastName()
     {
     }
 
     /**
-     * Test attribute "company"
+     * Test attribute "company".
      */
     public function testPropertyCompany()
     {
     }
 
     /**
-     * Test attribute "contact_preference"
+     * Test attribute "contact_preference".
      */
     public function testPropertyContactPreference()
     {
     }
 
     /**
-     * Test attribute "gender"
+     * Test attribute "gender".
      */
     public function testPropertyGender()
     {
     }
 
     /**
-     * Test attribute "nickname"
+     * Test attribute "nickname".
      */
     public function testPropertyNickname()
     {
     }
 
     /**
-     * Test attribute "birthday"
+     * Test attribute "birthday".
      */
     public function testPropertyBirthday()
     {
     }
 
     /**
-     * Test attribute "emails"
+     * Test attribute "emails".
      */
     public function testPropertyEmails()
     {
     }
 
     /**
-     * Test attribute "phones"
+     * Test attribute "phones".
      */
     public function testPropertyPhones()
     {
     }
 
     /**
-     * Test attribute "addresses"
+     * Test attribute "addresses".
      */
     public function testPropertyAddresses()
     {

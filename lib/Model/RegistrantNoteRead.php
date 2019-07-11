@@ -1,35 +1,30 @@
 <?php
 /**
- * RegistrantNoteRead
+ * RegistrantNoteRead.
  *
  * PHP version 7
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso\Model;
 
-use \ArrayAccess;
-use \CollingMedia\Lasso\ObjectSerializer;
+use ArrayAccess;
+use CollingMedia\Lasso\ObjectSerializer;
 
 /**
- * RegistrantNoteRead Class Doc Comment
+ * RegistrantNoteRead Class Doc Comment.
  *
  * @category Class
  * @description Contains a free-form text field
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -38,38 +33,38 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'RegistrantNoteRead';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'note_id' => 'string',
         'note' => 'string',
         'created_by' => '\CollingMedia\Lasso\Model\Creator',
-        '_links' => '\CollingMedia\Lasso\Model\RegistrantNoteWriteLinks'
+        '_links' => '\CollingMedia\Lasso\Model\RegistrantNoteWriteLinks',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'note_id' => null,
         'note' => null,
         'created_by' => null,
-        '_links' => null
+        '_links' => null,
     ];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
+     * Array of property to type mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -79,7 +74,7 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
+     * Array of property to format mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -90,7 +85,7 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
@@ -98,11 +93,11 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
         'note_id' => 'noteId',
         'note' => 'note',
         'created_by' => 'createdBy',
-        '_links' => '_links'
+        '_links' => '_links',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -110,11 +105,11 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
         'note_id' => 'setNoteId',
         'note' => 'setNote',
         'created_by' => 'setCreatedBy',
-        '_links' => 'setLinks'
+        '_links' => 'setLinks',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -122,12 +117,12 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
         'note_id' => 'getNoteId',
         'note' => 'getNote',
         'created_by' => 'getCreatedBy',
-        '_links' => 'getLinks'
+        '_links' => 'getLinks',
     ];
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @return array
      */
@@ -137,7 +132,7 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @return array
      */
@@ -147,7 +142,7 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @return array
      */
@@ -166,19 +161,15 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
-
-    
-
     /**
-     * Associative array for storing property values
+     * Associative array for storing property values.
      *
      * @var mixed[]
      */
     protected $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
@@ -205,7 +196,7 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
@@ -214,9 +205,8 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
-     * Gets note_id
+     * Gets note_id.
      *
      * @return string
      */
@@ -226,7 +216,7 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets note_id
+     * Sets note_id.
      *
      * @param string $note_id note_id
      *
@@ -240,7 +230,7 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets note
+     * Gets note.
      *
      * @return string
      */
@@ -250,7 +240,7 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets note
+     * Sets note.
      *
      * @param string $note note
      *
@@ -264,7 +254,7 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets created_by
+     * Gets created_by.
      *
      * @return \CollingMedia\Lasso\Model\Creator
      */
@@ -274,7 +264,7 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets created_by
+     * Sets created_by.
      *
      * @param \CollingMedia\Lasso\Model\Creator $created_by created_by
      *
@@ -288,7 +278,7 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets _links
+     * Gets _links.
      *
      * @return \CollingMedia\Lasso\Model\RegistrantNoteWriteLinks
      */
@@ -298,7 +288,7 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets _links
+     * Sets _links.
      *
      * @param \CollingMedia\Lasso\Model\RegistrantNoteWriteLinks $_links _links
      *
@@ -310,12 +300,13 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -325,7 +316,7 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return mixed
      */
@@ -337,7 +328,7 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
     /**
      * Sets value based on offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      * @param mixed   $value  Value to be set
      *
      * @return void
@@ -354,7 +345,7 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return void
      */
@@ -364,7 +355,7 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets the string presentation of the object
+     * Gets the string presentation of the object.
      *
      * @return string
      */
@@ -380,5 +371,3 @@ class RegistrantNoteRead implements ModelInterface, ArrayAccess
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

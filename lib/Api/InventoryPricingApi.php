@@ -1,41 +1,36 @@
 <?php
 /**
  * InventoryPricingApi
- * PHP version 7
+ * PHP version 7.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso\Api;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use GuzzleHttp\ClientInterface;
 use CollingMedia\Lasso\ApiException;
+use GuzzleHttp\Psr7\MultipartStream;
 use CollingMedia\Lasso\Configuration;
 use CollingMedia\Lasso\HeaderSelector;
 use CollingMedia\Lasso\ObjectSerializer;
+use GuzzleHttp\Exception\RequestException;
 
 /**
- * InventoryPricingApi Class Doc Comment
+ * InventoryPricingApi Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -80,7 +75,7 @@ class InventoryPricingApi
     }
 
     /**
-     * Operation inventoryInventoryIdPricingGet
+     * Operation inventoryInventoryIdPricingGet.
      *
      * @param  string $inventory_id inventory_id (required)
      *
@@ -90,12 +85,13 @@ class InventoryPricingApi
      */
     public function inventoryInventoryIdPricingGet($inventory_id)
     {
-        list($response) = $this->inventoryInventoryIdPricingGetWithHttpInfo($inventory_id);
+        [$response] = $this->inventoryInventoryIdPricingGetWithHttpInfo($inventory_id);
+
         return $response;
     }
 
     /**
-     * Operation inventoryInventoryIdPricingGetWithHttpInfo
+     * Operation inventoryInventoryIdPricingGetWithHttpInfo.
      *
      * @param  string $inventory_id (required)
      *
@@ -149,9 +145,8 @@ class InventoryPricingApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -184,9 +179,9 @@ class InventoryPricingApi
     }
 
     /**
-     * Operation inventoryInventoryIdPricingGetAsync
+     * Operation inventoryInventoryIdPricingGetAsync.
      *
-     * 
+     *
      *
      * @param  string $inventory_id (required)
      *
@@ -204,9 +199,9 @@ class InventoryPricingApi
     }
 
     /**
-     * Operation inventoryInventoryIdPricingGetAsyncWithHttpInfo
+     * Operation inventoryInventoryIdPricingGetAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $inventory_id (required)
      *
@@ -235,7 +230,7 @@ class InventoryPricingApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -256,7 +251,7 @@ class InventoryPricingApi
     }
 
     /**
-     * Create request for operation 'inventoryInventoryIdPricingGet'
+     * Create request for operation 'inventoryInventoryIdPricingGet'.
      *
      * @param  string $inventory_id (required)
      *
@@ -279,11 +274,10 @@ class InventoryPricingApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($inventory_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'inventoryId' . '}',
+                '{'.'inventoryId'.'}',
                 ObjectSerializer::toPathValue($inventory_id),
                 $resourcePath
             );
@@ -317,15 +311,13 @@ class InventoryPricingApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -350,16 +342,17 @@ class InventoryPricingApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation inventoryInventoryIdPricingPut
+     * Operation inventoryInventoryIdPricingPut.
      *
      * @param  string $inventory_id inventory_id (required)
      * @param  \CollingMedia\Lasso\Model\Pricing $dates dates (required)
@@ -370,12 +363,13 @@ class InventoryPricingApi
      */
     public function inventoryInventoryIdPricingPut($inventory_id, $dates)
     {
-        list($response) = $this->inventoryInventoryIdPricingPutWithHttpInfo($inventory_id, $dates);
+        [$response] = $this->inventoryInventoryIdPricingPutWithHttpInfo($inventory_id, $dates);
+
         return $response;
     }
 
     /**
-     * Operation inventoryInventoryIdPricingPutWithHttpInfo
+     * Operation inventoryInventoryIdPricingPutWithHttpInfo.
      *
      * @param  string $inventory_id (required)
      * @param  \CollingMedia\Lasso\Model\Pricing $dates (required)
@@ -430,9 +424,8 @@ class InventoryPricingApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -465,9 +458,9 @@ class InventoryPricingApi
     }
 
     /**
-     * Operation inventoryInventoryIdPricingPutAsync
+     * Operation inventoryInventoryIdPricingPutAsync.
      *
-     * 
+     *
      *
      * @param  string $inventory_id (required)
      * @param  \CollingMedia\Lasso\Model\Pricing $dates (required)
@@ -486,9 +479,9 @@ class InventoryPricingApi
     }
 
     /**
-     * Operation inventoryInventoryIdPricingPutAsyncWithHttpInfo
+     * Operation inventoryInventoryIdPricingPutAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $inventory_id (required)
      * @param  \CollingMedia\Lasso\Model\Pricing $dates (required)
@@ -518,7 +511,7 @@ class InventoryPricingApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -539,7 +532,7 @@ class InventoryPricingApi
     }
 
     /**
-     * Create request for operation 'inventoryInventoryIdPricingPut'
+     * Create request for operation 'inventoryInventoryIdPricingPut'.
      *
      * @param  string $inventory_id (required)
      * @param  \CollingMedia\Lasso\Model\Pricing $dates (required)
@@ -569,11 +562,10 @@ class InventoryPricingApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($inventory_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'inventoryId' . '}',
+                '{'.'inventoryId'.'}',
                 ObjectSerializer::toPathValue($inventory_id),
                 $resourcePath
             );
@@ -610,15 +602,13 @@ class InventoryPricingApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -643,16 +633,17 @@ class InventoryPricingApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
      *
      * @throws \RuntimeException on file opening failure
      * @return array of http client options
@@ -662,8 +653,8 @@ class InventoryPricingApi
         $options = [];
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            if (! $options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

@@ -1,35 +1,30 @@
 <?php
 /**
- * FollowUpProcess
+ * FollowUpProcess.
  *
  * PHP version 7
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso\Model;
 
-use \ArrayAccess;
-use \CollingMedia\Lasso\ObjectSerializer;
+use ArrayAccess;
+use CollingMedia\Lasso\ObjectSerializer;
 
 /**
- * FollowUpProcess Class Doc Comment
+ * FollowUpProcess Class Doc Comment.
  *
  * @category Class
  * @description If &#x60;followUpProcessId&#x60; is provided, the system will attempt to lookup the process by id, and fail if not found. If &#x60;followUpProcessId&#x60; is not provided, but &#x60;followUpProcess&#x60; is instead provided, the system will then attempt to lookup the process by value. If the value doesn&#39;t exist, it will be created
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -38,34 +33,34 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'FollowUpProcess';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'follow_up_process_id' => 'string',
-        'follow_up_process' => 'string'
+        'follow_up_process' => 'string',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'follow_up_process_id' => null,
-        'follow_up_process' => null
+        'follow_up_process' => null,
     ];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
+     * Array of property to type mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -75,7 +70,7 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
+     * Array of property to format mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -86,38 +81,38 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static $attributeMap = [
         'follow_up_process_id' => 'followUpProcessId',
-        'follow_up_process' => 'followUpProcess'
+        'follow_up_process' => 'followUpProcess',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
     protected static $setters = [
         'follow_up_process_id' => 'setFollowUpProcessId',
-        'follow_up_process' => 'setFollowUpProcess'
+        'follow_up_process' => 'setFollowUpProcess',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
     protected static $getters = [
         'follow_up_process_id' => 'getFollowUpProcessId',
-        'follow_up_process' => 'getFollowUpProcess'
+        'follow_up_process' => 'getFollowUpProcess',
     ];
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @return array
      */
@@ -127,7 +122,7 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @return array
      */
@@ -137,7 +132,7 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @return array
      */
@@ -156,19 +151,15 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
-
-    
-
     /**
-     * Associative array for storing property values
+     * Associative array for storing property values.
      *
      * @var mixed[]
      */
     protected $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
@@ -188,11 +179,11 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
     {
         $invalidProperties = [];
 
-        if (!is_null($this->container['follow_up_process']) && (mb_strlen($this->container['follow_up_process']) > 20)) {
+        if (! is_null($this->container['follow_up_process']) && (mb_strlen($this->container['follow_up_process']) > 20)) {
             $invalidProperties[] = "invalid value for 'follow_up_process', the character length must be smaller than or equal to 20.";
         }
 
-        if (!is_null($this->container['follow_up_process']) && (mb_strlen($this->container['follow_up_process']) < 1)) {
+        if (! is_null($this->container['follow_up_process']) && (mb_strlen($this->container['follow_up_process']) < 1)) {
             $invalidProperties[] = "invalid value for 'follow_up_process', the character length must be bigger than or equal to 1.";
         }
 
@@ -201,7 +192,7 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
@@ -210,9 +201,8 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
-     * Gets follow_up_process_id
+     * Gets follow_up_process_id.
      *
      * @return string
      */
@@ -222,7 +212,7 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets follow_up_process_id
+     * Sets follow_up_process_id.
      *
      * @param string $follow_up_process_id follow_up_process_id
      *
@@ -236,7 +226,7 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets follow_up_process
+     * Gets follow_up_process.
      *
      * @return string
      */
@@ -246,7 +236,7 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets follow_up_process
+     * Sets follow_up_process.
      *
      * @param string $follow_up_process follow_up_process
      *
@@ -254,10 +244,10 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
      */
     public function setFollowUpProcess($follow_up_process)
     {
-        if (!is_null($follow_up_process) && (mb_strlen($follow_up_process) > 20)) {
+        if (! is_null($follow_up_process) && (mb_strlen($follow_up_process) > 20)) {
             throw new \InvalidArgumentException('invalid length for $follow_up_process when calling FollowUpProcess., must be smaller than or equal to 20.');
         }
-        if (!is_null($follow_up_process) && (mb_strlen($follow_up_process) < 1)) {
+        if (! is_null($follow_up_process) && (mb_strlen($follow_up_process) < 1)) {
             throw new \InvalidArgumentException('invalid length for $follow_up_process when calling FollowUpProcess., must be bigger than or equal to 1.');
         }
 
@@ -265,12 +255,13 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -280,7 +271,7 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return mixed
      */
@@ -292,7 +283,7 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
     /**
      * Sets value based on offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      * @param mixed   $value  Value to be set
      *
      * @return void
@@ -309,7 +300,7 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return void
      */
@@ -319,7 +310,7 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets the string presentation of the object
+     * Gets the string presentation of the object.
      *
      * @return string
      */
@@ -335,5 +326,3 @@ class FollowUpProcess implements ModelInterface, ArrayAccess
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-
