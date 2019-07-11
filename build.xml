@@ -38,7 +38,6 @@
         <mkdir dir="${basedir}/build/cache"/>
     </target>
 
-    <!-- Lint the PHP files in application dir. Linting the whole ZF framework library takes forever -->
     <target name="lint" description="Perform syntax check of sourcecode files">
         <apply executable="php" failonerror="true">
             <arg value="-l" />
@@ -50,18 +49,16 @@
         </apply>
     </target>
 
-    <!-- PHPLoc (Lines Of Code) report -->
     <target name="phploc" description="Measure project size using PHPLOC">
-        <exec executable="phploc">
+        <exec executable="vendor/bin/phploc">
             <arg value="--log-csv" />
             <arg value="${basedir}/build/logs/phploc.csv" />
             <arg path="${basedir}/lib" />
         </exec>
     </target>
 
-    <!-- PHP Mess Detector -->
     <target name="phpmd" description="Perform project mess detection using PHPMD creating a log file for the continuous integration server">
-        <exec executable="phpmd">
+        <exec executable="vendor/bin/phpmd">
             <arg path="${basedir}/lib" />
             <arg value="xml" />
             <arg value="codesize,unusedcode,naming" />
@@ -70,26 +67,23 @@
         </exec>
     </target>
 
-    <!-- PHP Copy Paste Detector -->
     <target name="phpcpd" description="Find duplicate code using PHPCPD">
-        <exec executable="phpcpd">
+        <exec executable="vendor/bin/phpcpd">
             <arg value="--log-pmd" />
             <arg value="${basedir}/build/logs/pmd-cpd.xml" />
             <arg path="${basedir}/lib" />
         </exec>
     </target>
 
-    <!-- PHP Code Sniffer - tokenises PHP, JS and CSS files and detects violations of defined coding standards -->
     <target name="phpcs" description="Check code with PHP Code Sniffer">
-        <exec executable="phpcs">
+        <exec executable="vendor/bin/phpcs">
             <arg value="-n" />
             <arg path="${basedir}/lib" />
         </exec>
     </target>
 
-    <!-- Kick off phpunit - this requires 3.4.1 because of assertType(), deprecated in 3.5.x and removed from 3.6.x. -->
     <target name="phpunit">
-        <exec executable="phpunit" failonerror="true" description="Run unit tests with PHPUnit">
+        <exec executable="vendor/bin/phpunit" failonerror="true" description="Run unit tests with PHPUnit">
             <env key="APPLICATION_ENV" value="testing"/>
             <arg line="--verbose --stderr" />
         </exec>

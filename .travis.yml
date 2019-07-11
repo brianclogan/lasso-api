@@ -1,14 +1,10 @@
 language: php
 sudo: false
 php:
-    - 7.0
-    - 7.1
     - 7.2
     - 7.3
-    - hhvm
 before_install:
     - echo $(ant -version)
     - composer install
 script:
-    - vendor/bin/phpunit
     - ant
