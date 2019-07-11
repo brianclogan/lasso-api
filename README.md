@@ -1,9 +1,9 @@
 # Lasso API
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/collingmedia/lasso-api.svg?style=for-the-badge)](https://packagist.org/packages/collingmedia/lasso-api)
-[![Build Status](https://img.shields.io/travis/colling-media/lasso-api/master.svg?style=for-the-badge)](https://travis-ci.org/colling-media/lasso-api)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/collingmedia/lasso-api.svg?style=flat-square)](https://packagist.org/packages/collingmedia/lasso-api)
+[![Build Status](https://img.shields.io/travis/colling-media/lasso-api/master.svg?style=flat-square)](https://travis-ci.org/colling-media/lasso-api)
 [![StyleCI](https://styleci.io/repos/196468636/shield)](https://styleci.io/repos/196468636)
-[![Total Downloads](https://img.shields.io/packagist/dt/collingmedia/lasso-api.svg?style=for-the-badge)](https://packagist.org/packages/collingmedia/lasso-api)
+[![Total Downloads](https://img.shields.io/packagist/dt/collingmedia/lasso-api.svg?style=flat-square)](https://packagist.org/packages/collingmedia/lasso-api)
 
 Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
 
