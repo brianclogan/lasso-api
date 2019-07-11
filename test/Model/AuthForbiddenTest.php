@@ -23,8 +23,10 @@
  * Please update the test case below to test the model.
  */
 
+
 namespace CollingMedia\Lasso;
 
+use PHPUnit\Framework\TestCase;
 /**
  * AuthForbiddenTest Class Doc Comment
  *
@@ -34,7 +36,7 @@ namespace CollingMedia\Lasso;
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class AuthForbiddenTest extends \PHPUnit_Framework_TestCase
+class AuthForbiddenTest extends TestCase
 {
 
     /**

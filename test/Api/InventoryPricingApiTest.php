@@ -22,8 +22,10 @@
  * Please update the test case below to test the endpoint.
  */
 
+
 namespace CollingMedia\Lasso;
 
+use PHPUnit\Framework\TestCase;
 use \CollingMedia\Lasso\Configuration;
 use \CollingMedia\Lasso\ApiException;
 use \CollingMedia\Lasso\ObjectSerializer;
@@ -36,7 +38,7 @@ use \CollingMedia\Lasso\ObjectSerializer;
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
-class InventoryPricingApiTest extends \PHPUnit_Framework_TestCase
+class InventoryPricingApiTest extends TestCase
 {
 
     /**
