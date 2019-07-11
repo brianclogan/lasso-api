@@ -1,0 +1,36 @@
+{
+    "name": "collingmedia/lasso-api",
+    "description": "A PHP SDK for the Lasso CRM API.",
+    "keywords": [
+        "lasso",
+        "crm",
+        "sdk",
+        "api"
+    ],
+    "homepage": "https://collingmedia.com",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Brian Logan",
+            "homepage": "https://github.com/colling-media/lasso-api"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^6.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8",
+        "squizlabs/php_codesniffer": "~2.6",
+        "friendsofphp/php-cs-fixer": "~2.12"
+    },
+    "autoload": {
+        "psr-4": { "CollingMedia\\Lasso\\" : "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "CollingMedia\\Lasso\\" : "test/" }
+    }
+}
