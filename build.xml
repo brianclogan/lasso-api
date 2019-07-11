@@ -2,7 +2,7 @@
 <!-- Set some basic project information and targets -->
 <project name="lass-api" default="build">
 
-    <target name="build" depends="prepare, lint, phploc, phpmd, phpcpd, phpcs, phpdoc, phpunit"/>
+    <target name="build" depends="prepare, lint, phploc, phpmd, phpcpd, phpcs, phpunit"/>
 
     <target name="build-parallel" depends="prepare,lint, tools-parallel, phpcpd, phpunit"/>
 
@@ -56,16 +56,6 @@
             <arg value="--log-csv" />
             <arg value="${basedir}/build/logs/phploc.csv" />
             <arg path="${basedir}/lib" />
-        </exec>
-    </target>
-
-    <!-- PHPDoc report -->
-    <target name="phpdoc" description="Create Docs via PHPDoc">
-        <exec executable="phpdoc">
-            <arg value="-d" />
-            <arg value="./lib" />
-            <arg value="-t" />
-            <arg path="${basedir}/build/docs" />
         </exec>
     </target>
 
