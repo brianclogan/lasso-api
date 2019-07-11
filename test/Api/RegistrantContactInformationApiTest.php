@@ -1,19 +1,17 @@
 <?php
 /**
  * RegistrantContactInformationApiTest
- * PHP version 7
+ * PHP version 7.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
 
 /**
@@ -22,158 +20,141 @@
  * Please update the test case below to test the endpoint.
  */
 
-
 namespace CollingMedia\Lasso;
 
 use PHPUnit\Framework\TestCase;
-use \CollingMedia\Lasso\Configuration;
-use \CollingMedia\Lasso\ApiException;
-use \CollingMedia\Lasso\ObjectSerializer;
 
 /**
- * RegistrantContactInformationApiTest Class Doc Comment
+ * RegistrantContactInformationApiTest Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 class RegistrantContactInformationApiTest extends TestCase
 {
-
     /**
-     * Setup before running any test cases
+     * Setup before running any test cases.
      */
     public static function setUpBeforeClass()
     {
     }
 
     /**
-     * Setup before running each test case
+     * Setup before running each test case.
      */
     public function setUp()
     {
     }
 
     /**
-     * Clean up after running each test case
+     * Clean up after running each test case.
      */
     public function tearDown()
     {
     }
 
     /**
-     * Clean up after running all test cases
+     * Clean up after running all test cases.
      */
     public static function tearDownAfterClass()
     {
     }
 
     /**
-     * Test case for registrantsRegistrantIdAddressesAddressIdDelete
+     * Test case for registrantsRegistrantIdAddressesAddressIdDelete.
      *
      * .
-     *
      */
     public function testRegistrantsRegistrantIdAddressesAddressIdDelete()
     {
     }
 
     /**
-     * Test case for registrantsRegistrantIdAddressesAddressIdPut
+     * Test case for registrantsRegistrantIdAddressesAddressIdPut.
      *
      * .
-     *
      */
     public function testRegistrantsRegistrantIdAddressesAddressIdPut()
     {
     }
 
     /**
-     * Test case for registrantsRegistrantIdAddressesPost
+     * Test case for registrantsRegistrantIdAddressesPost.
      *
      * .
-     *
      */
     public function testRegistrantsRegistrantIdAddressesPost()
     {
     }
 
     /**
-     * Test case for registrantsRegistrantIdEmailsEmailIdDelete
+     * Test case for registrantsRegistrantIdEmailsEmailIdDelete.
      *
      * .
-     *
      */
     public function testRegistrantsRegistrantIdEmailsEmailIdDelete()
     {
     }
 
     /**
-     * Test case for registrantsRegistrantIdEmailsEmailIdPut
+     * Test case for registrantsRegistrantIdEmailsEmailIdPut.
      *
      * .
-     *
      */
     public function testRegistrantsRegistrantIdEmailsEmailIdPut()
     {
     }
 
     /**
-     * Test case for registrantsRegistrantIdEmailsPost
+     * Test case for registrantsRegistrantIdEmailsPost.
      *
      * .
-     *
      */
     public function testRegistrantsRegistrantIdEmailsPost()
     {
     }
 
     /**
-     * Test case for registrantsRegistrantIdPersonContactInformationGet
+     * Test case for registrantsRegistrantIdPersonContactInformationGet.
      *
      * Retrieve all of a registrant's contact information.
-     *
      */
     public function testRegistrantsRegistrantIdPersonContactInformationGet()
     {
     }
 
     /**
-     * Test case for registrantsRegistrantIdPersonContactInformationPut
+     * Test case for registrantsRegistrantIdPersonContactInformationPut.
      *
      * Convenience method to update all of a registrant's contact information in a single call.
-     *
      */
     public function testRegistrantsRegistrantIdPersonContactInformationPut()
     {
     }
 
     /**
-     * Test case for registrantsRegistrantIdPhonesPhoneIdDelete
+     * Test case for registrantsRegistrantIdPhonesPhoneIdDelete.
      *
      * .
-     *
      */
     public function testRegistrantsRegistrantIdPhonesPhoneIdDelete()
     {
     }
 
     /**
-     * Test case for registrantsRegistrantIdPhonesPhoneIdPut
+     * Test case for registrantsRegistrantIdPhonesPhoneIdPut.
      *
      * .
-     *
      */
     public function testRegistrantsRegistrantIdPhonesPhoneIdPut()
     {
     }
 
     /**
-     * Test case for registrantsRegistrantIdPhonesPost
+     * Test case for registrantsRegistrantIdPhonesPost.
      *
      * .
-     *
      */
     public function testRegistrantsRegistrantIdPhonesPost()
     {

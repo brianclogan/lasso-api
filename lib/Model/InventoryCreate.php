@@ -1,72 +1,68 @@
 <?php
 /**
- * InventoryCreate
+ * InventoryCreate.
  *
  * PHP version 7
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
 
-
-
 namespace CollingMedia\Lasso\Model;
-use \CollingMedia\Lasso\ObjectSerializer;
+
+use CollingMedia\Lasso\ObjectSerializer;
 
 /**
- * InventoryCreate Class Doc Comment
+ * InventoryCreate Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
-class InventoryCreate extends Inventory 
+class InventoryCreate extends Inventory
 {
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'InventoryCreate';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'component' => '\CollingMedia\Lasso\Model\Component',
         'strata_lot' => 'string',
         'inventory_number' => 'string',
-        '_links' => '\CollingMedia\Lasso\Model\InventoryLinks'
+        '_links' => '\CollingMedia\Lasso\Model\InventoryLinks',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'component' => null,
         'strata_lot' => null,
         'inventory_number' => null,
-        '_links' => null
+        '_links' => null,
     ];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
+     * Array of property to type mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -76,7 +72,7 @@ class InventoryCreate extends Inventory
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
+     * Array of property to format mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -87,7 +83,7 @@ class InventoryCreate extends Inventory
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
@@ -95,11 +91,11 @@ class InventoryCreate extends Inventory
         'component' => 'component',
         'strata_lot' => 'strataLot',
         'inventory_number' => 'inventoryNumber',
-        '_links' => '_links'
+        '_links' => '_links',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -107,11 +103,11 @@ class InventoryCreate extends Inventory
         'component' => 'setComponent',
         'strata_lot' => 'setStrataLot',
         'inventory_number' => 'setInventoryNumber',
-        '_links' => 'setLinks'
+        '_links' => 'setLinks',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -119,12 +115,12 @@ class InventoryCreate extends Inventory
         'component' => 'getComponent',
         'strata_lot' => 'getStrataLot',
         'inventory_number' => 'getInventoryNumber',
-        '_links' => 'getLinks'
+        '_links' => 'getLinks',
     ];
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @return array
      */
@@ -134,7 +130,7 @@ class InventoryCreate extends Inventory
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @return array
      */
@@ -144,7 +140,7 @@ class InventoryCreate extends Inventory
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @return array
      */
@@ -163,13 +159,8 @@ class InventoryCreate extends Inventory
         return self::$swaggerModelName;
     }
 
-    
-
-    
-
-
     /**
-     * Constructor
+     * Constructor.
      *
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
@@ -199,12 +190,13 @@ class InventoryCreate extends Inventory
         if ($this->container['inventory_number'] === null) {
             $invalidProperties[] = "'inventory_number' can't be null";
         }
+
         return $invalidProperties;
     }
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
@@ -213,9 +205,8 @@ class InventoryCreate extends Inventory
         return count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
-     * Gets component
+     * Gets component.
      *
      * @return \CollingMedia\Lasso\Model\Component
      */
@@ -225,7 +216,7 @@ class InventoryCreate extends Inventory
     }
 
     /**
-     * Sets component
+     * Sets component.
      *
      * @param \CollingMedia\Lasso\Model\Component $component component
      *
@@ -239,7 +230,7 @@ class InventoryCreate extends Inventory
     }
 
     /**
-     * Gets strata_lot
+     * Gets strata_lot.
      *
      * @return string
      */
@@ -249,7 +240,7 @@ class InventoryCreate extends Inventory
     }
 
     /**
-     * Sets strata_lot
+     * Sets strata_lot.
      *
      * @param string $strata_lot strata_lot
      *
@@ -263,7 +254,7 @@ class InventoryCreate extends Inventory
     }
 
     /**
-     * Gets inventory_number
+     * Gets inventory_number.
      *
      * @return string
      */
@@ -273,7 +264,7 @@ class InventoryCreate extends Inventory
     }
 
     /**
-     * Sets inventory_number
+     * Sets inventory_number.
      *
      * @param string $inventory_number inventory_number
      *
@@ -287,7 +278,7 @@ class InventoryCreate extends Inventory
     }
 
     /**
-     * Gets _links
+     * Gets _links.
      *
      * @return \CollingMedia\Lasso\Model\InventoryLinks
      */
@@ -297,7 +288,7 @@ class InventoryCreate extends Inventory
     }
 
     /**
-     * Sets _links
+     * Sets _links.
      *
      * @param \CollingMedia\Lasso\Model\InventoryLinks $_links _links
      *
@@ -309,12 +300,13 @@ class InventoryCreate extends Inventory
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -324,7 +316,7 @@ class InventoryCreate extends Inventory
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return mixed
      */
@@ -336,7 +328,7 @@ class InventoryCreate extends Inventory
     /**
      * Sets value based on offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      * @param mixed   $value  Value to be set
      *
      * @return void
@@ -353,7 +345,7 @@ class InventoryCreate extends Inventory
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return void
      */
@@ -363,7 +355,7 @@ class InventoryCreate extends Inventory
     }
 
     /**
-     * Gets the string presentation of the object
+     * Gets the string presentation of the object.
      *
      * @return string
      */
@@ -379,5 +371,3 @@ class InventoryCreate extends Inventory
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

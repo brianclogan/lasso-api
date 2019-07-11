@@ -1,41 +1,36 @@
 <?php
 /**
  * RegistrantHistoryApi
- * PHP version 7
+ * PHP version 7.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso\Api;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use GuzzleHttp\ClientInterface;
 use CollingMedia\Lasso\ApiException;
+use GuzzleHttp\Psr7\MultipartStream;
 use CollingMedia\Lasso\Configuration;
 use CollingMedia\Lasso\HeaderSelector;
 use CollingMedia\Lasso\ObjectSerializer;
+use GuzzleHttp\Exception\RequestException;
 
 /**
- * RegistrantHistoryApi Class Doc Comment
+ * RegistrantHistoryApi Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -80,7 +75,7 @@ class RegistrantHistoryApi
     }
 
     /**
-     * Operation registrantsRegistrantIdHistoriesHistoryIdGet
+     * Operation registrantsRegistrantIdHistoriesHistoryIdGet.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  string $history_id history_id (required)
@@ -91,12 +86,13 @@ class RegistrantHistoryApi
      */
     public function registrantsRegistrantIdHistoriesHistoryIdGet($registrant_id, $history_id)
     {
-        list($response) = $this->registrantsRegistrantIdHistoriesHistoryIdGetWithHttpInfo($registrant_id, $history_id);
+        [$response] = $this->registrantsRegistrantIdHistoriesHistoryIdGetWithHttpInfo($registrant_id, $history_id);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdHistoriesHistoryIdGetWithHttpInfo
+     * Operation registrantsRegistrantIdHistoriesHistoryIdGetWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  string $history_id (required)
@@ -151,9 +147,8 @@ class RegistrantHistoryApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -170,9 +165,9 @@ class RegistrantHistoryApi
     }
 
     /**
-     * Operation registrantsRegistrantIdHistoriesHistoryIdGetAsync
+     * Operation registrantsRegistrantIdHistoriesHistoryIdGetAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $history_id (required)
@@ -191,9 +186,9 @@ class RegistrantHistoryApi
     }
 
     /**
-     * Operation registrantsRegistrantIdHistoriesHistoryIdGetAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdHistoriesHistoryIdGetAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $history_id (required)
@@ -223,7 +218,7 @@ class RegistrantHistoryApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -244,7 +239,7 @@ class RegistrantHistoryApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdHistoriesHistoryIdGet'
+     * Create request for operation 'registrantsRegistrantIdHistoriesHistoryIdGet'.
      *
      * @param  string $registrant_id (required)
      * @param  string $history_id (required)
@@ -274,11 +269,10 @@ class RegistrantHistoryApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -286,7 +280,7 @@ class RegistrantHistoryApi
         // path params
         if ($history_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'historyId' . '}',
+                '{'.'historyId'.'}',
                 ObjectSerializer::toPathValue($history_id),
                 $resourcePath
             );
@@ -320,15 +314,13 @@ class RegistrantHistoryApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -353,16 +345,17 @@ class RegistrantHistoryApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdHistoriesHistoryIdPut
+     * Operation registrantsRegistrantIdHistoriesHistoryIdPut.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  string $history_id history_id (required)
@@ -374,12 +367,13 @@ class RegistrantHistoryApi
      */
     public function registrantsRegistrantIdHistoriesHistoryIdPut($registrant_id, $history_id, $history)
     {
-        list($response) = $this->registrantsRegistrantIdHistoriesHistoryIdPutWithHttpInfo($registrant_id, $history_id, $history);
+        [$response] = $this->registrantsRegistrantIdHistoriesHistoryIdPutWithHttpInfo($registrant_id, $history_id, $history);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdHistoriesHistoryIdPutWithHttpInfo
+     * Operation registrantsRegistrantIdHistoriesHistoryIdPutWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  string $history_id (required)
@@ -435,9 +429,8 @@ class RegistrantHistoryApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -454,9 +447,9 @@ class RegistrantHistoryApi
     }
 
     /**
-     * Operation registrantsRegistrantIdHistoriesHistoryIdPutAsync
+     * Operation registrantsRegistrantIdHistoriesHistoryIdPutAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $history_id (required)
@@ -476,9 +469,9 @@ class RegistrantHistoryApi
     }
 
     /**
-     * Operation registrantsRegistrantIdHistoriesHistoryIdPutAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdHistoriesHistoryIdPutAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $history_id (required)
@@ -509,7 +502,7 @@ class RegistrantHistoryApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -530,7 +523,7 @@ class RegistrantHistoryApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdHistoriesHistoryIdPut'
+     * Create request for operation 'registrantsRegistrantIdHistoriesHistoryIdPut'.
      *
      * @param  string $registrant_id (required)
      * @param  string $history_id (required)
@@ -567,11 +560,10 @@ class RegistrantHistoryApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -579,7 +571,7 @@ class RegistrantHistoryApi
         // path params
         if ($history_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'historyId' . '}',
+                '{'.'historyId'.'}',
                 ObjectSerializer::toPathValue($history_id),
                 $resourcePath
             );
@@ -616,15 +608,13 @@ class RegistrantHistoryApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -649,16 +639,17 @@ class RegistrantHistoryApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdHistoriesPost
+     * Operation registrantsRegistrantIdHistoriesPost.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\HistoryWrite $history history (required)
@@ -669,12 +660,13 @@ class RegistrantHistoryApi
      */
     public function registrantsRegistrantIdHistoriesPost($registrant_id, $history)
     {
-        list($response) = $this->registrantsRegistrantIdHistoriesPostWithHttpInfo($registrant_id, $history);
+        [$response] = $this->registrantsRegistrantIdHistoriesPostWithHttpInfo($registrant_id, $history);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdHistoriesPostWithHttpInfo
+     * Operation registrantsRegistrantIdHistoriesPostWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\HistoryWrite $history (required)
@@ -729,9 +721,8 @@ class RegistrantHistoryApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -756,9 +747,9 @@ class RegistrantHistoryApi
     }
 
     /**
-     * Operation registrantsRegistrantIdHistoriesPostAsync
+     * Operation registrantsRegistrantIdHistoriesPostAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\HistoryWrite $history (required)
@@ -777,9 +768,9 @@ class RegistrantHistoryApi
     }
 
     /**
-     * Operation registrantsRegistrantIdHistoriesPostAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdHistoriesPostAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\HistoryWrite $history (required)
@@ -809,7 +800,7 @@ class RegistrantHistoryApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -830,7 +821,7 @@ class RegistrantHistoryApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdHistoriesPost'
+     * Create request for operation 'registrantsRegistrantIdHistoriesPost'.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\HistoryWrite $history (required)
@@ -860,11 +851,10 @@ class RegistrantHistoryApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -901,15 +891,13 @@ class RegistrantHistoryApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -934,16 +922,17 @@ class RegistrantHistoryApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
      *
      * @throws \RuntimeException on file opening failure
      * @return array of http client options
@@ -953,8 +942,8 @@ class RegistrantHistoryApi
         $options = [];
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            if (! $options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

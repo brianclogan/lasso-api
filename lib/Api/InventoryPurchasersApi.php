@@ -1,41 +1,36 @@
 <?php
 /**
  * InventoryPurchasersApi
- * PHP version 7
+ * PHP version 7.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso\Api;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use GuzzleHttp\ClientInterface;
 use CollingMedia\Lasso\ApiException;
+use GuzzleHttp\Psr7\MultipartStream;
 use CollingMedia\Lasso\Configuration;
 use CollingMedia\Lasso\HeaderSelector;
 use CollingMedia\Lasso\ObjectSerializer;
+use GuzzleHttp\Exception\RequestException;
 
 /**
- * InventoryPurchasersApi Class Doc Comment
+ * InventoryPurchasersApi Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -80,7 +75,7 @@ class InventoryPurchasersApi
     }
 
     /**
-     * Operation inventoryInventoryIdPurchasersGet
+     * Operation inventoryInventoryIdPurchasersGet.
      *
      * @param  string $inventory_id inventory_id (required)
      *
@@ -90,12 +85,13 @@ class InventoryPurchasersApi
      */
     public function inventoryInventoryIdPurchasersGet($inventory_id)
     {
-        list($response) = $this->inventoryInventoryIdPurchasersGetWithHttpInfo($inventory_id);
+        [$response] = $this->inventoryInventoryIdPurchasersGetWithHttpInfo($inventory_id);
+
         return $response;
     }
 
     /**
-     * Operation inventoryInventoryIdPurchasersGetWithHttpInfo
+     * Operation inventoryInventoryIdPurchasersGetWithHttpInfo.
      *
      * @param  string $inventory_id (required)
      *
@@ -149,9 +145,8 @@ class InventoryPurchasersApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -184,9 +179,9 @@ class InventoryPurchasersApi
     }
 
     /**
-     * Operation inventoryInventoryIdPurchasersGetAsync
+     * Operation inventoryInventoryIdPurchasersGetAsync.
      *
-     * 
+     *
      *
      * @param  string $inventory_id (required)
      *
@@ -204,9 +199,9 @@ class InventoryPurchasersApi
     }
 
     /**
-     * Operation inventoryInventoryIdPurchasersGetAsyncWithHttpInfo
+     * Operation inventoryInventoryIdPurchasersGetAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $inventory_id (required)
      *
@@ -235,7 +230,7 @@ class InventoryPurchasersApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -256,7 +251,7 @@ class InventoryPurchasersApi
     }
 
     /**
-     * Create request for operation 'inventoryInventoryIdPurchasersGet'
+     * Create request for operation 'inventoryInventoryIdPurchasersGet'.
      *
      * @param  string $inventory_id (required)
      *
@@ -279,11 +274,10 @@ class InventoryPurchasersApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($inventory_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'inventoryId' . '}',
+                '{'.'inventoryId'.'}',
                 ObjectSerializer::toPathValue($inventory_id),
                 $resourcePath
             );
@@ -317,15 +311,13 @@ class InventoryPurchasersApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -350,16 +342,17 @@ class InventoryPurchasersApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation inventoryInventoryIdPurchasersPut
+     * Operation inventoryInventoryIdPurchasersPut.
      *
      * @param  string $inventory_id inventory_id (required)
      * @param  \CollingMedia\Lasso\Model\PurchaserCreate[] $purchasers purchasers (required)
@@ -370,12 +363,13 @@ class InventoryPurchasersApi
      */
     public function inventoryInventoryIdPurchasersPut($inventory_id, $purchasers)
     {
-        list($response) = $this->inventoryInventoryIdPurchasersPutWithHttpInfo($inventory_id, $purchasers);
+        [$response] = $this->inventoryInventoryIdPurchasersPutWithHttpInfo($inventory_id, $purchasers);
+
         return $response;
     }
 
     /**
-     * Operation inventoryInventoryIdPurchasersPutWithHttpInfo
+     * Operation inventoryInventoryIdPurchasersPutWithHttpInfo.
      *
      * @param  string $inventory_id (required)
      * @param  \CollingMedia\Lasso\Model\PurchaserCreate[] $purchasers (required)
@@ -430,9 +424,8 @@ class InventoryPurchasersApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -473,9 +466,9 @@ class InventoryPurchasersApi
     }
 
     /**
-     * Operation inventoryInventoryIdPurchasersPutAsync
+     * Operation inventoryInventoryIdPurchasersPutAsync.
      *
-     * 
+     *
      *
      * @param  string $inventory_id (required)
      * @param  \CollingMedia\Lasso\Model\PurchaserCreate[] $purchasers (required)
@@ -494,9 +487,9 @@ class InventoryPurchasersApi
     }
 
     /**
-     * Operation inventoryInventoryIdPurchasersPutAsyncWithHttpInfo
+     * Operation inventoryInventoryIdPurchasersPutAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $inventory_id (required)
      * @param  \CollingMedia\Lasso\Model\PurchaserCreate[] $purchasers (required)
@@ -526,7 +519,7 @@ class InventoryPurchasersApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -547,7 +540,7 @@ class InventoryPurchasersApi
     }
 
     /**
-     * Create request for operation 'inventoryInventoryIdPurchasersPut'
+     * Create request for operation 'inventoryInventoryIdPurchasersPut'.
      *
      * @param  string $inventory_id (required)
      * @param  \CollingMedia\Lasso\Model\PurchaserCreate[] $purchasers (required)
@@ -577,11 +570,10 @@ class InventoryPurchasersApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($inventory_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'inventoryId' . '}',
+                '{'.'inventoryId'.'}',
                 ObjectSerializer::toPathValue($inventory_id),
                 $resourcePath
             );
@@ -618,15 +610,13 @@ class InventoryPurchasersApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -651,16 +641,17 @@ class InventoryPurchasersApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
      *
      * @throws \RuntimeException on file opening failure
      * @return array of http client options
@@ -670,8 +661,8 @@ class InventoryPurchasersApi
         $options = [];
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            if (! $options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

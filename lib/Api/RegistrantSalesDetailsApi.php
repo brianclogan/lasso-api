@@ -1,41 +1,36 @@
 <?php
 /**
  * RegistrantSalesDetailsApi
- * PHP version 7
+ * PHP version 7.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso\Api;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use GuzzleHttp\ClientInterface;
 use CollingMedia\Lasso\ApiException;
+use GuzzleHttp\Psr7\MultipartStream;
 use CollingMedia\Lasso\Configuration;
 use CollingMedia\Lasso\HeaderSelector;
 use CollingMedia\Lasso\ObjectSerializer;
+use GuzzleHttp\Exception\RequestException;
 
 /**
- * RegistrantSalesDetailsApi Class Doc Comment
+ * RegistrantSalesDetailsApi Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -80,7 +75,7 @@ class RegistrantSalesDetailsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdFollowUpProcessPut
+     * Operation registrantsRegistrantIdFollowUpProcessPut.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\FollowUpProcess $follow_up_process follow_up_process (required)
@@ -91,12 +86,13 @@ class RegistrantSalesDetailsApi
      */
     public function registrantsRegistrantIdFollowUpProcessPut($registrant_id, $follow_up_process)
     {
-        list($response) = $this->registrantsRegistrantIdFollowUpProcessPutWithHttpInfo($registrant_id, $follow_up_process);
+        [$response] = $this->registrantsRegistrantIdFollowUpProcessPutWithHttpInfo($registrant_id, $follow_up_process);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdFollowUpProcessPutWithHttpInfo
+     * Operation registrantsRegistrantIdFollowUpProcessPutWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\FollowUpProcess $follow_up_process (required)
@@ -151,9 +147,8 @@ class RegistrantSalesDetailsApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -170,9 +165,9 @@ class RegistrantSalesDetailsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdFollowUpProcessPutAsync
+     * Operation registrantsRegistrantIdFollowUpProcessPutAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\FollowUpProcess $follow_up_process (required)
@@ -191,9 +186,9 @@ class RegistrantSalesDetailsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdFollowUpProcessPutAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdFollowUpProcessPutAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\FollowUpProcess $follow_up_process (required)
@@ -223,7 +218,7 @@ class RegistrantSalesDetailsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -244,7 +239,7 @@ class RegistrantSalesDetailsApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdFollowUpProcessPut'
+     * Create request for operation 'registrantsRegistrantIdFollowUpProcessPut'.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\FollowUpProcess $follow_up_process (required)
@@ -274,11 +269,10 @@ class RegistrantSalesDetailsApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -315,15 +309,13 @@ class RegistrantSalesDetailsApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -348,16 +340,17 @@ class RegistrantSalesDetailsApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdRatingPut
+     * Operation registrantsRegistrantIdRatingPut.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\Rating $rating rating (required)
@@ -368,12 +361,13 @@ class RegistrantSalesDetailsApi
      */
     public function registrantsRegistrantIdRatingPut($registrant_id, $rating)
     {
-        list($response) = $this->registrantsRegistrantIdRatingPutWithHttpInfo($registrant_id, $rating);
+        [$response] = $this->registrantsRegistrantIdRatingPutWithHttpInfo($registrant_id, $rating);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdRatingPutWithHttpInfo
+     * Operation registrantsRegistrantIdRatingPutWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\Rating $rating (required)
@@ -428,9 +422,8 @@ class RegistrantSalesDetailsApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -447,9 +440,9 @@ class RegistrantSalesDetailsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdRatingPutAsync
+     * Operation registrantsRegistrantIdRatingPutAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\Rating $rating (required)
@@ -468,9 +461,9 @@ class RegistrantSalesDetailsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdRatingPutAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdRatingPutAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\Rating $rating (required)
@@ -500,7 +493,7 @@ class RegistrantSalesDetailsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -521,7 +514,7 @@ class RegistrantSalesDetailsApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdRatingPut'
+     * Create request for operation 'registrantsRegistrantIdRatingPut'.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\Rating $rating (required)
@@ -551,11 +544,10 @@ class RegistrantSalesDetailsApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -592,15 +584,13 @@ class RegistrantSalesDetailsApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -625,16 +615,17 @@ class RegistrantSalesDetailsApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdSecondarySourceTypePut
+     * Operation registrantsRegistrantIdSecondarySourceTypePut.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\SecondarySourceType $secondary_source_type secondary_source_type (required)
@@ -645,12 +636,13 @@ class RegistrantSalesDetailsApi
      */
     public function registrantsRegistrantIdSecondarySourceTypePut($registrant_id, $secondary_source_type)
     {
-        list($response) = $this->registrantsRegistrantIdSecondarySourceTypePutWithHttpInfo($registrant_id, $secondary_source_type);
+        [$response] = $this->registrantsRegistrantIdSecondarySourceTypePutWithHttpInfo($registrant_id, $secondary_source_type);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdSecondarySourceTypePutWithHttpInfo
+     * Operation registrantsRegistrantIdSecondarySourceTypePutWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\SecondarySourceType $secondary_source_type (required)
@@ -705,9 +697,8 @@ class RegistrantSalesDetailsApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -724,9 +715,9 @@ class RegistrantSalesDetailsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdSecondarySourceTypePutAsync
+     * Operation registrantsRegistrantIdSecondarySourceTypePutAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\SecondarySourceType $secondary_source_type (required)
@@ -745,9 +736,9 @@ class RegistrantSalesDetailsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdSecondarySourceTypePutAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdSecondarySourceTypePutAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\SecondarySourceType $secondary_source_type (required)
@@ -777,7 +768,7 @@ class RegistrantSalesDetailsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -798,7 +789,7 @@ class RegistrantSalesDetailsApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdSecondarySourceTypePut'
+     * Create request for operation 'registrantsRegistrantIdSecondarySourceTypePut'.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\SecondarySourceType $secondary_source_type (required)
@@ -828,11 +819,10 @@ class RegistrantSalesDetailsApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -869,15 +859,13 @@ class RegistrantSalesDetailsApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -902,16 +890,17 @@ class RegistrantSalesDetailsApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdSourceTypePut
+     * Operation registrantsRegistrantIdSourceTypePut.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\SourceType $source_type source_type (required)
@@ -922,12 +911,13 @@ class RegistrantSalesDetailsApi
      */
     public function registrantsRegistrantIdSourceTypePut($registrant_id, $source_type)
     {
-        list($response) = $this->registrantsRegistrantIdSourceTypePutWithHttpInfo($registrant_id, $source_type);
+        [$response] = $this->registrantsRegistrantIdSourceTypePutWithHttpInfo($registrant_id, $source_type);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdSourceTypePutWithHttpInfo
+     * Operation registrantsRegistrantIdSourceTypePutWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\SourceType $source_type (required)
@@ -982,9 +972,8 @@ class RegistrantSalesDetailsApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1001,9 +990,9 @@ class RegistrantSalesDetailsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdSourceTypePutAsync
+     * Operation registrantsRegistrantIdSourceTypePutAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\SourceType $source_type (required)
@@ -1022,9 +1011,9 @@ class RegistrantSalesDetailsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdSourceTypePutAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdSourceTypePutAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\SourceType $source_type (required)
@@ -1054,7 +1043,7 @@ class RegistrantSalesDetailsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -1075,7 +1064,7 @@ class RegistrantSalesDetailsApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdSourceTypePut'
+     * Create request for operation 'registrantsRegistrantIdSourceTypePut'.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\SourceType $source_type (required)
@@ -1105,11 +1094,10 @@ class RegistrantSalesDetailsApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -1146,15 +1134,13 @@ class RegistrantSalesDetailsApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -1179,16 +1165,17 @@ class RegistrantSalesDetailsApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
      *
      * @throws \RuntimeException on file opening failure
      * @return array of http client options
@@ -1198,8 +1185,8 @@ class RegistrantSalesDetailsApi
         $options = [];
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            if (! $options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

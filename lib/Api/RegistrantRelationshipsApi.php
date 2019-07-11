@@ -1,41 +1,36 @@
 <?php
 /**
  * RegistrantRelationshipsApi
- * PHP version 7
+ * PHP version 7.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso\Api;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use GuzzleHttp\ClientInterface;
 use CollingMedia\Lasso\ApiException;
+use GuzzleHttp\Psr7\MultipartStream;
 use CollingMedia\Lasso\Configuration;
 use CollingMedia\Lasso\HeaderSelector;
 use CollingMedia\Lasso\ObjectSerializer;
+use GuzzleHttp\Exception\RequestException;
 
 /**
- * RegistrantRelationshipsApi Class Doc Comment
+ * RegistrantRelationshipsApi Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -80,7 +75,7 @@ class RegistrantRelationshipsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdRelationshipsPost
+     * Operation registrantsRegistrantIdRelationshipsPost.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\RegistrantRelationshipCreate $relationship relationship (required)
@@ -91,12 +86,13 @@ class RegistrantRelationshipsApi
      */
     public function registrantsRegistrantIdRelationshipsPost($registrant_id, $relationship)
     {
-        list($response) = $this->registrantsRegistrantIdRelationshipsPostWithHttpInfo($registrant_id, $relationship);
+        [$response] = $this->registrantsRegistrantIdRelationshipsPostWithHttpInfo($registrant_id, $relationship);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdRelationshipsPostWithHttpInfo
+     * Operation registrantsRegistrantIdRelationshipsPostWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\RegistrantRelationshipCreate $relationship (required)
@@ -151,9 +147,8 @@ class RegistrantRelationshipsApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -178,9 +173,9 @@ class RegistrantRelationshipsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdRelationshipsPostAsync
+     * Operation registrantsRegistrantIdRelationshipsPostAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\RegistrantRelationshipCreate $relationship (required)
@@ -199,9 +194,9 @@ class RegistrantRelationshipsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdRelationshipsPostAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdRelationshipsPostAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\RegistrantRelationshipCreate $relationship (required)
@@ -231,7 +226,7 @@ class RegistrantRelationshipsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -252,7 +247,7 @@ class RegistrantRelationshipsApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdRelationshipsPost'
+     * Create request for operation 'registrantsRegistrantIdRelationshipsPost'.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\RegistrantRelationshipCreate $relationship (required)
@@ -282,11 +277,10 @@ class RegistrantRelationshipsApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -323,15 +317,13 @@ class RegistrantRelationshipsApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -356,16 +348,17 @@ class RegistrantRelationshipsApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdRelationshipsRelationshipIdDelete
+     * Operation registrantsRegistrantIdRelationshipsRelationshipIdDelete.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  string $relationship_id relationship_id (required)
@@ -380,7 +373,7 @@ class RegistrantRelationshipsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdRelationshipsRelationshipIdDeleteWithHttpInfo
+     * Operation registrantsRegistrantIdRelationshipsRelationshipIdDeleteWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  string $relationship_id (required)
@@ -423,7 +416,6 @@ class RegistrantRelationshipsApi
             }
 
             return [null, $statusCode, $response->getHeaders()];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -432,9 +424,9 @@ class RegistrantRelationshipsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdRelationshipsRelationshipIdDeleteAsync
+     * Operation registrantsRegistrantIdRelationshipsRelationshipIdDeleteAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $relationship_id (required)
@@ -453,9 +445,9 @@ class RegistrantRelationshipsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdRelationshipsRelationshipIdDeleteAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdRelationshipsRelationshipIdDeleteAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $relationship_id (required)
@@ -492,7 +484,7 @@ class RegistrantRelationshipsApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdRelationshipsRelationshipIdDelete'
+     * Create request for operation 'registrantsRegistrantIdRelationshipsRelationshipIdDelete'.
      *
      * @param  string $registrant_id (required)
      * @param  string $relationship_id (required)
@@ -522,11 +514,10 @@ class RegistrantRelationshipsApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -534,7 +525,7 @@ class RegistrantRelationshipsApi
         // path params
         if ($relationship_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'relationshipId' . '}',
+                '{'.'relationshipId'.'}',
                 ObjectSerializer::toPathValue($relationship_id),
                 $resourcePath
             );
@@ -568,15 +559,13 @@ class RegistrantRelationshipsApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -601,16 +590,17 @@ class RegistrantRelationshipsApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdRelationshipsRelationshipIdPut
+     * Operation registrantsRegistrantIdRelationshipsRelationshipIdPut.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  string $relationship_id relationship_id (required)
@@ -622,12 +612,13 @@ class RegistrantRelationshipsApi
      */
     public function registrantsRegistrantIdRelationshipsRelationshipIdPut($registrant_id, $relationship_id, $relationship)
     {
-        list($response) = $this->registrantsRegistrantIdRelationshipsRelationshipIdPutWithHttpInfo($registrant_id, $relationship_id, $relationship);
+        [$response] = $this->registrantsRegistrantIdRelationshipsRelationshipIdPutWithHttpInfo($registrant_id, $relationship_id, $relationship);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdRelationshipsRelationshipIdPutWithHttpInfo
+     * Operation registrantsRegistrantIdRelationshipsRelationshipIdPutWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  string $relationship_id (required)
@@ -683,9 +674,8 @@ class RegistrantRelationshipsApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -710,9 +700,9 @@ class RegistrantRelationshipsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdRelationshipsRelationshipIdPutAsync
+     * Operation registrantsRegistrantIdRelationshipsRelationshipIdPutAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $relationship_id (required)
@@ -732,9 +722,9 @@ class RegistrantRelationshipsApi
     }
 
     /**
-     * Operation registrantsRegistrantIdRelationshipsRelationshipIdPutAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdRelationshipsRelationshipIdPutAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $relationship_id (required)
@@ -765,7 +755,7 @@ class RegistrantRelationshipsApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -786,7 +776,7 @@ class RegistrantRelationshipsApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdRelationshipsRelationshipIdPut'
+     * Create request for operation 'registrantsRegistrantIdRelationshipsRelationshipIdPut'.
      *
      * @param  string $registrant_id (required)
      * @param  string $relationship_id (required)
@@ -823,11 +813,10 @@ class RegistrantRelationshipsApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -835,7 +824,7 @@ class RegistrantRelationshipsApi
         // path params
         if ($relationship_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'relationshipId' . '}',
+                '{'.'relationshipId'.'}',
                 ObjectSerializer::toPathValue($relationship_id),
                 $resourcePath
             );
@@ -872,15 +861,13 @@ class RegistrantRelationshipsApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -905,16 +892,17 @@ class RegistrantRelationshipsApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
      *
      * @throws \RuntimeException on file opening failure
      * @return array of http client options
@@ -924,8 +912,8 @@ class RegistrantRelationshipsApi
         $options = [];
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            if (! $options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

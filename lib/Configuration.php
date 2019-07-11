@@ -1,31 +1,26 @@
 <?php
 /**
  * Configuration
- * PHP version 7
+ * PHP version 7.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso;
 
 /**
  * Configuration Class Doc Comment
- * PHP version 7
+ * PHP version 7.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -34,77 +29,77 @@ class Configuration
     private static $defaultConfiguration;
 
     /**
-     * Associate array to store API key(s)
+     * Associate array to store API key(s).
      *
      * @var string[]
      */
     protected $apiKeys = [];
 
     /**
-     * Associate array to store API prefix (e.g. Bearer)
+     * Associate array to store API prefix (e.g. Bearer).
      *
      * @var string[]
      */
     protected $apiKeyPrefixes = [];
 
     /**
-     * Access token for OAuth
+     * Access token for OAuth.
      *
      * @var string
      */
     protected $accessToken = '';
 
     /**
-     * Username for HTTP basic authentication
+     * Username for HTTP basic authentication.
      *
      * @var string
      */
     protected $username = '';
 
     /**
-     * Password for HTTP basic authentication
+     * Password for HTTP basic authentication.
      *
      * @var string
      */
     protected $password = '';
 
     /**
-     * The host
+     * The host.
      *
      * @var string
      */
     protected $host = 'https://api.lassocrm.com/v1';
 
     /**
-     * User agent of the HTTP request, set to "PHP-Swagger" by default
+     * User agent of the HTTP request, set to "PHP-Swagger" by default.
      *
      * @var string
      */
     protected $userAgent = 'Swagger-Codegen/1.0.0/php';
 
     /**
-     * Debug switch (default set to false)
+     * Debug switch (default set to false).
      *
      * @var bool
      */
     protected $debug = false;
 
     /**
-     * Debug file location (log to STDOUT by default)
+     * Debug file location (log to STDOUT by default).
      *
      * @var string
      */
     protected $debugFile = 'php://output';
 
     /**
-     * Debug file location (log to STDOUT by default)
+     * Debug file location (log to STDOUT by default).
      *
      * @var string
      */
     protected $tempFolderPath;
 
     /**
-     * Constructor
+     * Constructor.
      */
     public function __construct()
     {
@@ -112,7 +107,7 @@ class Configuration
     }
 
     /**
-     * Sets API key
+     * Sets API key.
      *
      * @param string $apiKeyIdentifier API key identifier (authentication scheme)
      * @param string $key              API key or token
@@ -122,11 +117,12 @@ class Configuration
     public function setApiKey($apiKeyIdentifier, $key)
     {
         $this->apiKeys[$apiKeyIdentifier] = $key;
+
         return $this;
     }
 
     /**
-     * Gets API key
+     * Gets API key.
      *
      * @param string $apiKeyIdentifier API key identifier (authentication scheme)
      *
@@ -138,7 +134,7 @@ class Configuration
     }
 
     /**
-     * Sets the prefix for API key (e.g. Bearer)
+     * Sets the prefix for API key (e.g. Bearer).
      *
      * @param string $apiKeyIdentifier API key identifier (authentication scheme)
      * @param string $prefix           API key prefix, e.g. Bearer
@@ -148,11 +144,12 @@ class Configuration
     public function setApiKeyPrefix($apiKeyIdentifier, $prefix)
     {
         $this->apiKeyPrefixes[$apiKeyIdentifier] = $prefix;
+
         return $this;
     }
 
     /**
-     * Gets API key prefix
+     * Gets API key prefix.
      *
      * @param string $apiKeyIdentifier API key identifier (authentication scheme)
      *
@@ -164,7 +161,7 @@ class Configuration
     }
 
     /**
-     * Sets the access token for OAuth
+     * Sets the access token for OAuth.
      *
      * @param string $accessToken Token for OAuth
      *
@@ -173,11 +170,12 @@ class Configuration
     public function setAccessToken($accessToken)
     {
         $this->accessToken = $accessToken;
+
         return $this;
     }
 
     /**
-     * Gets the access token for OAuth
+     * Gets the access token for OAuth.
      *
      * @return string Access token for OAuth
      */
@@ -187,7 +185,7 @@ class Configuration
     }
 
     /**
-     * Sets the username for HTTP basic authentication
+     * Sets the username for HTTP basic authentication.
      *
      * @param string $username Username for HTTP basic authentication
      *
@@ -196,11 +194,12 @@ class Configuration
     public function setUsername($username)
     {
         $this->username = $username;
+
         return $this;
     }
 
     /**
-     * Gets the username for HTTP basic authentication
+     * Gets the username for HTTP basic authentication.
      *
      * @return string Username for HTTP basic authentication
      */
@@ -210,7 +209,7 @@ class Configuration
     }
 
     /**
-     * Sets the password for HTTP basic authentication
+     * Sets the password for HTTP basic authentication.
      *
      * @param string $password Password for HTTP basic authentication
      *
@@ -219,11 +218,12 @@ class Configuration
     public function setPassword($password)
     {
         $this->password = $password;
+
         return $this;
     }
 
     /**
-     * Gets the password for HTTP basic authentication
+     * Gets the password for HTTP basic authentication.
      *
      * @return string Password for HTTP basic authentication
      */
@@ -233,7 +233,7 @@ class Configuration
     }
 
     /**
-     * Sets the host
+     * Sets the host.
      *
      * @param string $host Host
      *
@@ -242,11 +242,12 @@ class Configuration
     public function setHost($host)
     {
         $this->host = $host;
+
         return $this;
     }
 
     /**
-     * Gets the host
+     * Gets the host.
      *
      * @return string Host
      */
@@ -256,7 +257,7 @@ class Configuration
     }
 
     /**
-     * Sets the user agent of the api client
+     * Sets the user agent of the api client.
      *
      * @param string $userAgent the user agent of the api client
      *
@@ -265,16 +266,17 @@ class Configuration
      */
     public function setUserAgent($userAgent)
     {
-        if (!is_string($userAgent)) {
+        if (! is_string($userAgent)) {
             throw new \InvalidArgumentException('User-agent must be a string.');
         }
 
         $this->userAgent = $userAgent;
+
         return $this;
     }
 
     /**
-     * Gets the user agent of the api client
+     * Gets the user agent of the api client.
      *
      * @return string user agent
      */
@@ -284,7 +286,7 @@ class Configuration
     }
 
     /**
-     * Sets debug flag
+     * Sets debug flag.
      *
      * @param bool $debug Debug flag
      *
@@ -293,11 +295,12 @@ class Configuration
     public function setDebug($debug)
     {
         $this->debug = $debug;
+
         return $this;
     }
 
     /**
-     * Gets the debug flag
+     * Gets the debug flag.
      *
      * @return bool
      */
@@ -307,7 +310,7 @@ class Configuration
     }
 
     /**
-     * Sets the debug file
+     * Sets the debug file.
      *
      * @param string $debugFile Debug file
      *
@@ -316,11 +319,12 @@ class Configuration
     public function setDebugFile($debugFile)
     {
         $this->debugFile = $debugFile;
+
         return $this;
     }
 
     /**
-     * Gets the debug file
+     * Gets the debug file.
      *
      * @return string
      */
@@ -330,7 +334,7 @@ class Configuration
     }
 
     /**
-     * Sets the temp folder path
+     * Sets the temp folder path.
      *
      * @param string $tempFolderPath Temp folder path
      *
@@ -339,11 +343,12 @@ class Configuration
     public function setTempFolderPath($tempFolderPath)
     {
         $this->tempFolderPath = $tempFolderPath;
+
         return $this;
     }
 
     /**
-     * Gets the temp folder path
+     * Gets the temp folder path.
      *
      * @return string Temp folder path
      */
@@ -353,49 +358,49 @@ class Configuration
     }
 
     /**
-     * Gets the default configuration instance
+     * Gets the default configuration instance.
      *
      * @return Configuration
      */
     public static function getDefaultConfiguration()
     {
         if (self::$defaultConfiguration === null) {
-            self::$defaultConfiguration = new Configuration();
+            self::$defaultConfiguration = new self();
         }
 
         return self::$defaultConfiguration;
     }
 
     /**
-     * Sets the detault configuration instance
+     * Sets the detault configuration instance.
      *
      * @param Configuration $config An instance of the Configuration Object
      *
      * @return void
      */
-    public static function setDefaultConfiguration(Configuration $config)
+    public static function setDefaultConfiguration(self $config)
     {
         self::$defaultConfiguration = $config;
     }
 
     /**
-     * Gets the essential information for debugging
+     * Gets the essential information for debugging.
      *
      * @return string The report for debugging
      */
     public static function toDebugReport()
     {
-        $report  = 'PHP SDK (CollingMedia\Lasso) Debug Report:' . PHP_EOL;
-        $report .= '    OS: ' . php_uname() . PHP_EOL;
-        $report .= '    PHP Version: ' . PHP_VERSION . PHP_EOL;
-        $report .= '    OpenAPI Spec Version: 1.0.36' . PHP_EOL;
-        $report .= '    Temp Folder Path: ' . self::getDefaultConfiguration()->getTempFolderPath() . PHP_EOL;
+        $report = 'PHP SDK (CollingMedia\Lasso) Debug Report:'.PHP_EOL;
+        $report .= '    OS: '.php_uname().PHP_EOL;
+        $report .= '    PHP Version: '.PHP_VERSION.PHP_EOL;
+        $report .= '    OpenAPI Spec Version: 1.0.36'.PHP_EOL;
+        $report .= '    Temp Folder Path: '.self::getDefaultConfiguration()->getTempFolderPath().PHP_EOL;
 
         return $report;
     }
 
     /**
-     * Get API key (with prefix if set)
+     * Get API key (with prefix if set).
      *
      * @param  string $apiKeyIdentifier name of apikey
      *
@@ -407,13 +412,13 @@ class Configuration
         $apiKey = $this->getApiKey($apiKeyIdentifier);
 
         if ($apiKey === null) {
-            return null;
+            return;
         }
 
         if ($prefix === null) {
             $keyWithPrefix = $apiKey;
         } else {
-            $keyWithPrefix = $prefix . ' ' . $apiKey;
+            $keyWithPrefix = $prefix.' '.$apiKey;
         }
 
         return $keyWithPrefix;

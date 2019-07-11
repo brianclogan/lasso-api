@@ -1,35 +1,30 @@
 <?php
 /**
- * Dates
+ * Dates.
  *
  * PHP version 7
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso\Model;
 
-use \ArrayAccess;
-use \CollingMedia\Lasso\ObjectSerializer;
+use ArrayAccess;
+use CollingMedia\Lasso\ObjectSerializer;
 
 /**
- * Dates Class Doc Comment
+ * Dates Class Doc Comment.
  *
  * @category Class
  * @description All dates are in the ISO 8601 UTC format, limited to year, month and day (YYYY-MM-DD). Will set all dates to blank if not provided.
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -38,17 +33,17 @@ class Dates implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'Dates';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'contract' => '\DateTime',
         'acceptance' => '\DateTime',
@@ -58,14 +53,14 @@ class Dates implements ModelInterface, ArrayAccess
         'occupancy' => '\DateTime',
         'send_to_lawyer' => '\DateTime',
         'adjustment' => '\DateTime',
-        '_links' => '\CollingMedia\Lasso\Model\DatesLinks'
+        '_links' => '\CollingMedia\Lasso\Model\DatesLinks',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'contract' => 'date',
         'acceptance' => 'date',
@@ -75,11 +70,11 @@ class Dates implements ModelInterface, ArrayAccess
         'occupancy' => 'date',
         'send_to_lawyer' => 'date',
         'adjustment' => 'date',
-        '_links' => null
+        '_links' => null,
     ];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
+     * Array of property to type mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -89,7 +84,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
+     * Array of property to format mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -100,7 +95,7 @@ class Dates implements ModelInterface, ArrayAccess
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
@@ -113,11 +108,11 @@ class Dates implements ModelInterface, ArrayAccess
         'occupancy' => 'occupancy',
         'send_to_lawyer' => 'sendToLawyer',
         'adjustment' => 'adjustment',
-        '_links' => '_links'
+        '_links' => '_links',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -130,11 +125,11 @@ class Dates implements ModelInterface, ArrayAccess
         'occupancy' => 'setOccupancy',
         'send_to_lawyer' => 'setSendToLawyer',
         'adjustment' => 'setAdjustment',
-        '_links' => 'setLinks'
+        '_links' => 'setLinks',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -147,12 +142,12 @@ class Dates implements ModelInterface, ArrayAccess
         'occupancy' => 'getOccupancy',
         'send_to_lawyer' => 'getSendToLawyer',
         'adjustment' => 'getAdjustment',
-        '_links' => 'getLinks'
+        '_links' => 'getLinks',
     ];
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @return array
      */
@@ -162,7 +157,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @return array
      */
@@ -172,7 +167,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @return array
      */
@@ -191,19 +186,15 @@ class Dates implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
-
-    
-
     /**
-     * Associative array for storing property values
+     * Associative array for storing property values.
      *
      * @var mixed[]
      */
     protected $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
@@ -235,7 +226,7 @@ class Dates implements ModelInterface, ArrayAccess
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
@@ -244,9 +235,8 @@ class Dates implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
-     * Gets contract
+     * Gets contract.
      *
      * @return \DateTime
      */
@@ -256,7 +246,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets contract
+     * Sets contract.
      *
      * @param \DateTime $contract contract
      *
@@ -270,7 +260,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets acceptance
+     * Gets acceptance.
      *
      * @return \DateTime
      */
@@ -280,7 +270,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets acceptance
+     * Sets acceptance.
      *
      * @param \DateTime $acceptance acceptance
      *
@@ -294,7 +284,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets completion
+     * Gets completion.
      *
      * @return \DateTime
      */
@@ -304,7 +294,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets completion
+     * Sets completion.
      *
      * @param \DateTime $completion completion
      *
@@ -318,7 +308,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets release
+     * Gets release.
      *
      * @return \DateTime
      */
@@ -328,7 +318,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets release
+     * Sets release.
      *
      * @param \DateTime $release release
      *
@@ -342,7 +332,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets possession
+     * Gets possession.
      *
      * @return \DateTime
      */
@@ -352,7 +342,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets possession
+     * Sets possession.
      *
      * @param \DateTime $possession possession
      *
@@ -366,7 +356,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets occupancy
+     * Gets occupancy.
      *
      * @return \DateTime
      */
@@ -376,7 +366,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets occupancy
+     * Sets occupancy.
      *
      * @param \DateTime $occupancy occupancy
      *
@@ -390,7 +380,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets send_to_lawyer
+     * Gets send_to_lawyer.
      *
      * @return \DateTime
      */
@@ -400,7 +390,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets send_to_lawyer
+     * Sets send_to_lawyer.
      *
      * @param \DateTime $send_to_lawyer send_to_lawyer
      *
@@ -414,7 +404,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets adjustment
+     * Gets adjustment.
      *
      * @return \DateTime
      */
@@ -424,7 +414,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets adjustment
+     * Sets adjustment.
      *
      * @param \DateTime $adjustment adjustment
      *
@@ -438,7 +428,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets _links
+     * Gets _links.
      *
      * @return \CollingMedia\Lasso\Model\DatesLinks
      */
@@ -448,7 +438,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets _links
+     * Sets _links.
      *
      * @param \CollingMedia\Lasso\Model\DatesLinks $_links _links
      *
@@ -460,12 +450,13 @@ class Dates implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -475,7 +466,7 @@ class Dates implements ModelInterface, ArrayAccess
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return mixed
      */
@@ -487,7 +478,7 @@ class Dates implements ModelInterface, ArrayAccess
     /**
      * Sets value based on offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      * @param mixed   $value  Value to be set
      *
      * @return void
@@ -504,7 +495,7 @@ class Dates implements ModelInterface, ArrayAccess
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return void
      */
@@ -514,7 +505,7 @@ class Dates implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets the string presentation of the object
+     * Gets the string presentation of the object.
      *
      * @return string
      */
@@ -530,5 +521,3 @@ class Dates implements ModelInterface, ArrayAccess
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

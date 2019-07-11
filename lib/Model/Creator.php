@@ -1,35 +1,30 @@
 <?php
 /**
- * Creator
+ * Creator.
  *
  * PHP version 7
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso\Model;
 
-use \ArrayAccess;
-use \CollingMedia\Lasso\ObjectSerializer;
+use ArrayAccess;
+use CollingMedia\Lasso\ObjectSerializer;
 
 /**
- * Creator Class Doc Comment
+ * Creator Class Doc Comment.
  *
  * @category Class
  * @description Determines the user that created this entity based on an ordered set of Heuristics: - if creator is null or empty, then default to user: Lasso Autobot - if userId is provided, then lookup user by id, respond with 400 level error if specified user does not exist - if user first and last name are provided, then lookup user by name, otherwise default to user: Lasso Autobot
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -38,36 +33,36 @@ class Creator implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'Creator';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'first_name' => 'string',
         'last_name' => 'string',
-        'user_id' => 'string'
+        'user_id' => 'string',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'first_name' => null,
         'last_name' => null,
-        'user_id' => null
+        'user_id' => null,
     ];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
+     * Array of property to type mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -77,7 +72,7 @@ class Creator implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
+     * Array of property to format mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -88,41 +83,41 @@ class Creator implements ModelInterface, ArrayAccess
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
     protected static $attributeMap = [
         'first_name' => 'firstName',
         'last_name' => 'lastName',
-        'user_id' => 'userId'
+        'user_id' => 'userId',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
     protected static $setters = [
         'first_name' => 'setFirstName',
         'last_name' => 'setLastName',
-        'user_id' => 'setUserId'
+        'user_id' => 'setUserId',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
     protected static $getters = [
         'first_name' => 'getFirstName',
         'last_name' => 'getLastName',
-        'user_id' => 'getUserId'
+        'user_id' => 'getUserId',
     ];
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @return array
      */
@@ -132,7 +127,7 @@ class Creator implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @return array
      */
@@ -142,7 +137,7 @@ class Creator implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @return array
      */
@@ -161,19 +156,15 @@ class Creator implements ModelInterface, ArrayAccess
         return self::$swaggerModelName;
     }
 
-    
-
-    
-
     /**
-     * Associative array for storing property values
+     * Associative array for storing property values.
      *
      * @var mixed[]
      */
     protected $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
@@ -199,7 +190,7 @@ class Creator implements ModelInterface, ArrayAccess
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
@@ -208,9 +199,8 @@ class Creator implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
-     * Gets first_name
+     * Gets first_name.
      *
      * @return string
      */
@@ -220,7 +210,7 @@ class Creator implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets first_name
+     * Sets first_name.
      *
      * @param string $first_name first_name
      *
@@ -234,7 +224,7 @@ class Creator implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets last_name
+     * Gets last_name.
      *
      * @return string
      */
@@ -244,7 +234,7 @@ class Creator implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets last_name
+     * Sets last_name.
      *
      * @param string $last_name last_name
      *
@@ -258,7 +248,7 @@ class Creator implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets user_id
+     * Gets user_id.
      *
      * @return string
      */
@@ -268,7 +258,7 @@ class Creator implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets user_id
+     * Sets user_id.
      *
      * @param string $user_id user_id
      *
@@ -280,12 +270,13 @@ class Creator implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -295,7 +286,7 @@ class Creator implements ModelInterface, ArrayAccess
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return mixed
      */
@@ -307,7 +298,7 @@ class Creator implements ModelInterface, ArrayAccess
     /**
      * Sets value based on offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      * @param mixed   $value  Value to be set
      *
      * @return void
@@ -324,7 +315,7 @@ class Creator implements ModelInterface, ArrayAccess
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return void
      */
@@ -334,7 +325,7 @@ class Creator implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets the string presentation of the object
+     * Gets the string presentation of the object.
      *
      * @return string
      */
@@ -350,5 +341,3 @@ class Creator implements ModelInterface, ArrayAccess
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

@@ -1,41 +1,36 @@
 <?php
 /**
  * RegistrantContactInformationApi
- * PHP version 7
+ * PHP version 7.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso\Api;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use GuzzleHttp\ClientInterface;
 use CollingMedia\Lasso\ApiException;
+use GuzzleHttp\Psr7\MultipartStream;
 use CollingMedia\Lasso\Configuration;
 use CollingMedia\Lasso\HeaderSelector;
 use CollingMedia\Lasso\ObjectSerializer;
+use GuzzleHttp\Exception\RequestException;
 
 /**
- * RegistrantContactInformationApi Class Doc Comment
+ * RegistrantContactInformationApi Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -80,7 +75,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdAddressesAddressIdDelete
+     * Operation registrantsRegistrantIdAddressesAddressIdDelete.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  string $address_id address_id (required)
@@ -95,7 +90,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdAddressesAddressIdDeleteWithHttpInfo
+     * Operation registrantsRegistrantIdAddressesAddressIdDeleteWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  string $address_id (required)
@@ -138,7 +133,6 @@ class RegistrantContactInformationApi
             }
 
             return [null, $statusCode, $response->getHeaders()];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -147,9 +141,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdAddressesAddressIdDeleteAsync
+     * Operation registrantsRegistrantIdAddressesAddressIdDeleteAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $address_id (required)
@@ -168,9 +162,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdAddressesAddressIdDeleteAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdAddressesAddressIdDeleteAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $address_id (required)
@@ -207,7 +201,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdAddressesAddressIdDelete'
+     * Create request for operation 'registrantsRegistrantIdAddressesAddressIdDelete'.
      *
      * @param  string $registrant_id (required)
      * @param  string $address_id (required)
@@ -237,11 +231,10 @@ class RegistrantContactInformationApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -249,7 +242,7 @@ class RegistrantContactInformationApi
         // path params
         if ($address_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'addressId' . '}',
+                '{'.'addressId'.'}',
                 ObjectSerializer::toPathValue($address_id),
                 $resourcePath
             );
@@ -283,15 +276,13 @@ class RegistrantContactInformationApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -316,16 +307,17 @@ class RegistrantContactInformationApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdAddressesAddressIdPut
+     * Operation registrantsRegistrantIdAddressesAddressIdPut.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  string $address_id address_id (required)
@@ -337,12 +329,13 @@ class RegistrantContactInformationApi
      */
     public function registrantsRegistrantIdAddressesAddressIdPut($registrant_id, $address_id, $address)
     {
-        list($response) = $this->registrantsRegistrantIdAddressesAddressIdPutWithHttpInfo($registrant_id, $address_id, $address);
+        [$response] = $this->registrantsRegistrantIdAddressesAddressIdPutWithHttpInfo($registrant_id, $address_id, $address);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdAddressesAddressIdPutWithHttpInfo
+     * Operation registrantsRegistrantIdAddressesAddressIdPutWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  string $address_id (required)
@@ -398,9 +391,8 @@ class RegistrantContactInformationApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -433,9 +425,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdAddressesAddressIdPutAsync
+     * Operation registrantsRegistrantIdAddressesAddressIdPutAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $address_id (required)
@@ -455,9 +447,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdAddressesAddressIdPutAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdAddressesAddressIdPutAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $address_id (required)
@@ -488,7 +480,7 @@ class RegistrantContactInformationApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -509,7 +501,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdAddressesAddressIdPut'
+     * Create request for operation 'registrantsRegistrantIdAddressesAddressIdPut'.
      *
      * @param  string $registrant_id (required)
      * @param  string $address_id (required)
@@ -546,11 +538,10 @@ class RegistrantContactInformationApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -558,7 +549,7 @@ class RegistrantContactInformationApi
         // path params
         if ($address_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'addressId' . '}',
+                '{'.'addressId'.'}',
                 ObjectSerializer::toPathValue($address_id),
                 $resourcePath
             );
@@ -595,15 +586,13 @@ class RegistrantContactInformationApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -628,16 +617,17 @@ class RegistrantContactInformationApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdAddressesPost
+     * Operation registrantsRegistrantIdAddressesPost.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\AddressWrite $addresses addresses (required)
@@ -648,12 +638,13 @@ class RegistrantContactInformationApi
      */
     public function registrantsRegistrantIdAddressesPost($registrant_id, $addresses)
     {
-        list($response) = $this->registrantsRegistrantIdAddressesPostWithHttpInfo($registrant_id, $addresses);
+        [$response] = $this->registrantsRegistrantIdAddressesPostWithHttpInfo($registrant_id, $addresses);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdAddressesPostWithHttpInfo
+     * Operation registrantsRegistrantIdAddressesPostWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\AddressWrite $addresses (required)
@@ -708,9 +699,8 @@ class RegistrantContactInformationApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -751,9 +741,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdAddressesPostAsync
+     * Operation registrantsRegistrantIdAddressesPostAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\AddressWrite $addresses (required)
@@ -772,9 +762,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdAddressesPostAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdAddressesPostAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\AddressWrite $addresses (required)
@@ -804,7 +794,7 @@ class RegistrantContactInformationApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -825,7 +815,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdAddressesPost'
+     * Create request for operation 'registrantsRegistrantIdAddressesPost'.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\AddressWrite $addresses (required)
@@ -855,11 +845,10 @@ class RegistrantContactInformationApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -896,15 +885,13 @@ class RegistrantContactInformationApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -929,16 +916,17 @@ class RegistrantContactInformationApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdEmailsEmailIdDelete
+     * Operation registrantsRegistrantIdEmailsEmailIdDelete.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  string $email_id email_id (required)
@@ -953,7 +941,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdEmailsEmailIdDeleteWithHttpInfo
+     * Operation registrantsRegistrantIdEmailsEmailIdDeleteWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  string $email_id (required)
@@ -996,7 +984,6 @@ class RegistrantContactInformationApi
             }
 
             return [null, $statusCode, $response->getHeaders()];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 404:
@@ -1013,9 +1000,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdEmailsEmailIdDeleteAsync
+     * Operation registrantsRegistrantIdEmailsEmailIdDeleteAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $email_id (required)
@@ -1034,9 +1021,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdEmailsEmailIdDeleteAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdEmailsEmailIdDeleteAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $email_id (required)
@@ -1073,7 +1060,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdEmailsEmailIdDelete'
+     * Create request for operation 'registrantsRegistrantIdEmailsEmailIdDelete'.
      *
      * @param  string $registrant_id (required)
      * @param  string $email_id (required)
@@ -1103,11 +1090,10 @@ class RegistrantContactInformationApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -1115,7 +1101,7 @@ class RegistrantContactInformationApi
         // path params
         if ($email_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'emailId' . '}',
+                '{'.'emailId'.'}',
                 ObjectSerializer::toPathValue($email_id),
                 $resourcePath
             );
@@ -1149,15 +1135,13 @@ class RegistrantContactInformationApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -1182,16 +1166,17 @@ class RegistrantContactInformationApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdEmailsEmailIdPut
+     * Operation registrantsRegistrantIdEmailsEmailIdPut.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  string $email_id email_id (required)
@@ -1203,12 +1188,13 @@ class RegistrantContactInformationApi
      */
     public function registrantsRegistrantIdEmailsEmailIdPut($registrant_id, $email_id, $email)
     {
-        list($response) = $this->registrantsRegistrantIdEmailsEmailIdPutWithHttpInfo($registrant_id, $email_id, $email);
+        [$response] = $this->registrantsRegistrantIdEmailsEmailIdPutWithHttpInfo($registrant_id, $email_id, $email);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdEmailsEmailIdPutWithHttpInfo
+     * Operation registrantsRegistrantIdEmailsEmailIdPutWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  string $email_id (required)
@@ -1264,9 +1250,8 @@ class RegistrantContactInformationApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1299,9 +1284,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdEmailsEmailIdPutAsync
+     * Operation registrantsRegistrantIdEmailsEmailIdPutAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $email_id (required)
@@ -1321,9 +1306,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdEmailsEmailIdPutAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdEmailsEmailIdPutAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $email_id (required)
@@ -1354,7 +1339,7 @@ class RegistrantContactInformationApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -1375,7 +1360,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdEmailsEmailIdPut'
+     * Create request for operation 'registrantsRegistrantIdEmailsEmailIdPut'.
      *
      * @param  string $registrant_id (required)
      * @param  string $email_id (required)
@@ -1412,11 +1397,10 @@ class RegistrantContactInformationApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -1424,7 +1408,7 @@ class RegistrantContactInformationApi
         // path params
         if ($email_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'emailId' . '}',
+                '{'.'emailId'.'}',
                 ObjectSerializer::toPathValue($email_id),
                 $resourcePath
             );
@@ -1461,15 +1445,13 @@ class RegistrantContactInformationApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -1494,16 +1476,17 @@ class RegistrantContactInformationApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdEmailsPost
+     * Operation registrantsRegistrantIdEmailsPost.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\EmailWrite $emails emails (required)
@@ -1514,12 +1497,13 @@ class RegistrantContactInformationApi
      */
     public function registrantsRegistrantIdEmailsPost($registrant_id, $emails)
     {
-        list($response) = $this->registrantsRegistrantIdEmailsPostWithHttpInfo($registrant_id, $emails);
+        [$response] = $this->registrantsRegistrantIdEmailsPostWithHttpInfo($registrant_id, $emails);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdEmailsPostWithHttpInfo
+     * Operation registrantsRegistrantIdEmailsPostWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\EmailWrite $emails (required)
@@ -1574,9 +1558,8 @@ class RegistrantContactInformationApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -1617,9 +1600,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdEmailsPostAsync
+     * Operation registrantsRegistrantIdEmailsPostAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\EmailWrite $emails (required)
@@ -1638,9 +1621,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdEmailsPostAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdEmailsPostAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\EmailWrite $emails (required)
@@ -1670,7 +1653,7 @@ class RegistrantContactInformationApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -1691,7 +1674,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdEmailsPost'
+     * Create request for operation 'registrantsRegistrantIdEmailsPost'.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\EmailWrite $emails (required)
@@ -1721,11 +1704,10 @@ class RegistrantContactInformationApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -1762,15 +1744,13 @@ class RegistrantContactInformationApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -1795,16 +1775,17 @@ class RegistrantContactInformationApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdPersonContactInformationGet
+     * Operation registrantsRegistrantIdPersonContactInformationGet.
      *
      * Retrieve all of a registrant's contact information
      *
@@ -1816,12 +1797,13 @@ class RegistrantContactInformationApi
      */
     public function registrantsRegistrantIdPersonContactInformationGet($registrant_id)
     {
-        list($response) = $this->registrantsRegistrantIdPersonContactInformationGetWithHttpInfo($registrant_id);
+        [$response] = $this->registrantsRegistrantIdPersonContactInformationGetWithHttpInfo($registrant_id);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdPersonContactInformationGetWithHttpInfo
+     * Operation registrantsRegistrantIdPersonContactInformationGetWithHttpInfo.
      *
      * Retrieve all of a registrant's contact information
      *
@@ -1877,9 +1859,8 @@ class RegistrantContactInformationApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1896,7 +1877,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdPersonContactInformationGetAsync
+     * Operation registrantsRegistrantIdPersonContactInformationGetAsync.
      *
      * Retrieve all of a registrant's contact information
      *
@@ -1916,7 +1897,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdPersonContactInformationGetAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdPersonContactInformationGetAsyncWithHttpInfo.
      *
      * Retrieve all of a registrant's contact information
      *
@@ -1947,7 +1928,7 @@ class RegistrantContactInformationApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -1968,7 +1949,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdPersonContactInformationGet'
+     * Create request for operation 'registrantsRegistrantIdPersonContactInformationGet'.
      *
      * @param  string $registrant_id (required)
      *
@@ -1991,11 +1972,10 @@ class RegistrantContactInformationApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -2029,15 +2009,13 @@ class RegistrantContactInformationApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -2062,16 +2040,17 @@ class RegistrantContactInformationApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdPersonContactInformationPut
+     * Operation registrantsRegistrantIdPersonContactInformationPut.
      *
      * Convenience method to update all of a registrant's contact information in a single call
      *
@@ -2084,12 +2063,13 @@ class RegistrantContactInformationApi
      */
     public function registrantsRegistrantIdPersonContactInformationPut($registrant_id, $registrant_contact_information)
     {
-        list($response) = $this->registrantsRegistrantIdPersonContactInformationPutWithHttpInfo($registrant_id, $registrant_contact_information);
+        [$response] = $this->registrantsRegistrantIdPersonContactInformationPutWithHttpInfo($registrant_id, $registrant_contact_information);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdPersonContactInformationPutWithHttpInfo
+     * Operation registrantsRegistrantIdPersonContactInformationPutWithHttpInfo.
      *
      * Convenience method to update all of a registrant's contact information in a single call
      *
@@ -2146,9 +2126,8 @@ class RegistrantContactInformationApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -2181,7 +2160,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdPersonContactInformationPutAsync
+     * Operation registrantsRegistrantIdPersonContactInformationPutAsync.
      *
      * Convenience method to update all of a registrant's contact information in a single call
      *
@@ -2202,7 +2181,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdPersonContactInformationPutAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdPersonContactInformationPutAsyncWithHttpInfo.
      *
      * Convenience method to update all of a registrant's contact information in a single call
      *
@@ -2234,7 +2213,7 @@ class RegistrantContactInformationApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -2255,7 +2234,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdPersonContactInformationPut'
+     * Create request for operation 'registrantsRegistrantIdPersonContactInformationPut'.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\ContactInformation $registrant_contact_information Registrant&#39;s contact information for update.  Notes: - emails, phones, addresses: for the collections that are non-empty, there must be exactly   one entity within the collection that is a designated primary, otherwise a 400 error will be returned (required)
@@ -2285,11 +2264,10 @@ class RegistrantContactInformationApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -2326,15 +2304,13 @@ class RegistrantContactInformationApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -2359,16 +2335,17 @@ class RegistrantContactInformationApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdPhonesPhoneIdDelete
+     * Operation registrantsRegistrantIdPhonesPhoneIdDelete.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  string $phone_id phone_id (required)
@@ -2383,7 +2360,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdPhonesPhoneIdDeleteWithHttpInfo
+     * Operation registrantsRegistrantIdPhonesPhoneIdDeleteWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  string $phone_id (required)
@@ -2426,7 +2403,6 @@ class RegistrantContactInformationApi
             }
 
             return [null, $statusCode, $response->getHeaders()];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
             }
@@ -2435,9 +2411,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdPhonesPhoneIdDeleteAsync
+     * Operation registrantsRegistrantIdPhonesPhoneIdDeleteAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $phone_id (required)
@@ -2456,9 +2432,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdPhonesPhoneIdDeleteAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdPhonesPhoneIdDeleteAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $phone_id (required)
@@ -2495,7 +2471,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdPhonesPhoneIdDelete'
+     * Create request for operation 'registrantsRegistrantIdPhonesPhoneIdDelete'.
      *
      * @param  string $registrant_id (required)
      * @param  string $phone_id (required)
@@ -2525,11 +2501,10 @@ class RegistrantContactInformationApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -2537,7 +2512,7 @@ class RegistrantContactInformationApi
         // path params
         if ($phone_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'phoneId' . '}',
+                '{'.'phoneId'.'}',
                 ObjectSerializer::toPathValue($phone_id),
                 $resourcePath
             );
@@ -2571,15 +2546,13 @@ class RegistrantContactInformationApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -2604,16 +2577,17 @@ class RegistrantContactInformationApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdPhonesPhoneIdPut
+     * Operation registrantsRegistrantIdPhonesPhoneIdPut.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  string $phone_id phone_id (required)
@@ -2625,12 +2599,13 @@ class RegistrantContactInformationApi
      */
     public function registrantsRegistrantIdPhonesPhoneIdPut($registrant_id, $phone_id, $phone)
     {
-        list($response) = $this->registrantsRegistrantIdPhonesPhoneIdPutWithHttpInfo($registrant_id, $phone_id, $phone);
+        [$response] = $this->registrantsRegistrantIdPhonesPhoneIdPutWithHttpInfo($registrant_id, $phone_id, $phone);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdPhonesPhoneIdPutWithHttpInfo
+     * Operation registrantsRegistrantIdPhonesPhoneIdPutWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  string $phone_id (required)
@@ -2686,9 +2661,8 @@ class RegistrantContactInformationApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -2721,9 +2695,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdPhonesPhoneIdPutAsync
+     * Operation registrantsRegistrantIdPhonesPhoneIdPutAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $phone_id (required)
@@ -2743,9 +2717,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdPhonesPhoneIdPutAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdPhonesPhoneIdPutAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  string $phone_id (required)
@@ -2776,7 +2750,7 @@ class RegistrantContactInformationApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -2797,7 +2771,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdPhonesPhoneIdPut'
+     * Create request for operation 'registrantsRegistrantIdPhonesPhoneIdPut'.
      *
      * @param  string $registrant_id (required)
      * @param  string $phone_id (required)
@@ -2834,11 +2808,10 @@ class RegistrantContactInformationApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -2846,7 +2819,7 @@ class RegistrantContactInformationApi
         // path params
         if ($phone_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'phoneId' . '}',
+                '{'.'phoneId'.'}',
                 ObjectSerializer::toPathValue($phone_id),
                 $resourcePath
             );
@@ -2883,15 +2856,13 @@ class RegistrantContactInformationApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -2916,16 +2887,17 @@ class RegistrantContactInformationApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdPhonesPost
+     * Operation registrantsRegistrantIdPhonesPost.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\PhoneWrite $phones phones (required)
@@ -2936,12 +2908,13 @@ class RegistrantContactInformationApi
      */
     public function registrantsRegistrantIdPhonesPost($registrant_id, $phones)
     {
-        list($response) = $this->registrantsRegistrantIdPhonesPostWithHttpInfo($registrant_id, $phones);
+        [$response] = $this->registrantsRegistrantIdPhonesPostWithHttpInfo($registrant_id, $phones);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdPhonesPostWithHttpInfo
+     * Operation registrantsRegistrantIdPhonesPostWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\PhoneWrite $phones (required)
@@ -2996,9 +2969,8 @@ class RegistrantContactInformationApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -3039,9 +3011,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdPhonesPostAsync
+     * Operation registrantsRegistrantIdPhonesPostAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\PhoneWrite $phones (required)
@@ -3060,9 +3032,9 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Operation registrantsRegistrantIdPhonesPostAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdPhonesPostAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\PhoneWrite $phones (required)
@@ -3092,7 +3064,7 @@ class RegistrantContactInformationApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -3113,7 +3085,7 @@ class RegistrantContactInformationApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdPhonesPost'
+     * Create request for operation 'registrantsRegistrantIdPhonesPost'.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\PhoneWrite $phones (required)
@@ -3143,11 +3115,10 @@ class RegistrantContactInformationApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -3184,15 +3155,13 @@ class RegistrantContactInformationApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -3217,16 +3186,17 @@ class RegistrantContactInformationApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
      *
      * @throws \RuntimeException on file opening failure
      * @return array of http client options
@@ -3236,8 +3206,8 @@ class RegistrantContactInformationApi
         $options = [];
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            if (! $options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

@@ -1,41 +1,36 @@
 <?php
 /**
  * RegistrantApi
- * PHP version 7
+ * PHP version 7.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso\Api;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use GuzzleHttp\ClientInterface;
 use CollingMedia\Lasso\ApiException;
+use GuzzleHttp\Psr7\MultipartStream;
 use CollingMedia\Lasso\Configuration;
 use CollingMedia\Lasso\HeaderSelector;
 use CollingMedia\Lasso\ObjectSerializer;
+use GuzzleHttp\Exception\RequestException;
 
 /**
- * RegistrantApi Class Doc Comment
+ * RegistrantApi Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -80,7 +75,7 @@ class RegistrantApi
     }
 
     /**
-     * Operation registrantsGet
+     * Operation registrantsGet.
      *
      * List of registrants for a project.
      *
@@ -97,12 +92,13 @@ class RegistrantApi
      */
     public function registrantsGet($rating = null, $last_modified_after = null, $last_modified_before = null, $registered_after = null, $registered_before = null, $cursor = null)
     {
-        list($response) = $this->registrantsGetWithHttpInfo($rating, $last_modified_after, $last_modified_before, $registered_after, $registered_before, $cursor);
+        [$response] = $this->registrantsGetWithHttpInfo($rating, $last_modified_after, $last_modified_before, $registered_after, $registered_before, $cursor);
+
         return $response;
     }
 
     /**
-     * Operation registrantsGetWithHttpInfo
+     * Operation registrantsGetWithHttpInfo.
      *
      * List of registrants for a project.
      *
@@ -163,9 +159,8 @@ class RegistrantApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -182,7 +177,7 @@ class RegistrantApi
     }
 
     /**
-     * Operation registrantsGetAsync
+     * Operation registrantsGetAsync.
      *
      * List of registrants for a project.
      *
@@ -207,7 +202,7 @@ class RegistrantApi
     }
 
     /**
-     * Operation registrantsGetAsyncWithHttpInfo
+     * Operation registrantsGetAsyncWithHttpInfo.
      *
      * List of registrants for a project.
      *
@@ -243,7 +238,7 @@ class RegistrantApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -264,7 +259,7 @@ class RegistrantApi
     }
 
     /**
-     * Create request for operation 'registrantsGet'
+     * Create request for operation 'registrantsGet'.
      *
      * @param  string $rating (optional)
      * @param  \DateTime $last_modified_after Returns only registrants that were modified at least once since the given date, in ISO 8601 UTC format (optional)
@@ -278,7 +273,6 @@ class RegistrantApi
      */
     protected function registrantsGetRequest($rating = null, $last_modified_after = null, $last_modified_before = null, $registered_after = null, $registered_before = null, $cursor = null)
     {
-
         $resourcePath = '/registrants';
         $formParams = [];
         $queryParams = [];
@@ -311,7 +305,6 @@ class RegistrantApi
             $queryParams['cursor'] = ObjectSerializer::toQueryValue($cursor);
         }
 
-
         // body params
         $_tempBody = null;
 
@@ -340,15 +333,13 @@ class RegistrantApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -373,16 +364,17 @@ class RegistrantApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsPost
+     * Operation registrantsPost.
      *
      * Create a registrant
      *
@@ -394,12 +386,13 @@ class RegistrantApi
      */
     public function registrantsPost($registrant)
     {
-        list($response) = $this->registrantsPostWithHttpInfo($registrant);
+        [$response] = $this->registrantsPostWithHttpInfo($registrant);
+
         return $response;
     }
 
     /**
-     * Operation registrantsPostWithHttpInfo
+     * Operation registrantsPostWithHttpInfo.
      *
      * Create a registrant
      *
@@ -455,9 +448,8 @@ class RegistrantApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -490,7 +482,7 @@ class RegistrantApi
     }
 
     /**
-     * Operation registrantsPostAsync
+     * Operation registrantsPostAsync.
      *
      * Create a registrant
      *
@@ -510,7 +502,7 @@ class RegistrantApi
     }
 
     /**
-     * Operation registrantsPostAsyncWithHttpInfo
+     * Operation registrantsPostAsyncWithHttpInfo.
      *
      * Create a registrant
      *
@@ -541,7 +533,7 @@ class RegistrantApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -562,7 +554,7 @@ class RegistrantApi
     }
 
     /**
-     * Create request for operation 'registrantsPost'
+     * Create request for operation 'registrantsPost'.
      *
      * @param  \CollingMedia\Lasso\Model\RegistrantWrite $registrant Registrant to create (required)
      *
@@ -584,8 +576,6 @@ class RegistrantApi
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // body params
         $_tempBody = null;
@@ -618,15 +608,13 @@ class RegistrantApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -651,16 +639,17 @@ class RegistrantApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdGet
+     * Operation registrantsRegistrantIdGet.
      *
      * Extended data for a registrant
      *
@@ -672,12 +661,13 @@ class RegistrantApi
      */
     public function registrantsRegistrantIdGet($registrant_id)
     {
-        list($response) = $this->registrantsRegistrantIdGetWithHttpInfo($registrant_id);
+        [$response] = $this->registrantsRegistrantIdGetWithHttpInfo($registrant_id);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdGetWithHttpInfo
+     * Operation registrantsRegistrantIdGetWithHttpInfo.
      *
      * Extended data for a registrant
      *
@@ -733,9 +723,8 @@ class RegistrantApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -752,7 +741,7 @@ class RegistrantApi
     }
 
     /**
-     * Operation registrantsRegistrantIdGetAsync
+     * Operation registrantsRegistrantIdGetAsync.
      *
      * Extended data for a registrant
      *
@@ -772,7 +761,7 @@ class RegistrantApi
     }
 
     /**
-     * Operation registrantsRegistrantIdGetAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdGetAsyncWithHttpInfo.
      *
      * Extended data for a registrant
      *
@@ -803,7 +792,7 @@ class RegistrantApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -824,7 +813,7 @@ class RegistrantApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdGet'
+     * Create request for operation 'registrantsRegistrantIdGet'.
      *
      * @param  string $registrant_id (required)
      *
@@ -847,11 +836,10 @@ class RegistrantApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -885,15 +873,13 @@ class RegistrantApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -918,16 +904,17 @@ class RegistrantApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsRegistrantIdPut
+     * Operation registrantsRegistrantIdPut.
      *
      * @param  string $registrant_id registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\RegistrantPersonalInfo $registrant_personal_info Registrants personal data to update (required)
@@ -938,12 +925,13 @@ class RegistrantApi
      */
     public function registrantsRegistrantIdPut($registrant_id, $registrant_personal_info)
     {
-        list($response) = $this->registrantsRegistrantIdPutWithHttpInfo($registrant_id, $registrant_personal_info);
+        [$response] = $this->registrantsRegistrantIdPutWithHttpInfo($registrant_id, $registrant_personal_info);
+
         return $response;
     }
 
     /**
-     * Operation registrantsRegistrantIdPutWithHttpInfo
+     * Operation registrantsRegistrantIdPutWithHttpInfo.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\RegistrantPersonalInfo $registrant_personal_info Registrants personal data to update (required)
@@ -998,9 +986,8 @@ class RegistrantApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1033,9 +1020,9 @@ class RegistrantApi
     }
 
     /**
-     * Operation registrantsRegistrantIdPutAsync
+     * Operation registrantsRegistrantIdPutAsync.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\RegistrantPersonalInfo $registrant_personal_info Registrants personal data to update (required)
@@ -1054,9 +1041,9 @@ class RegistrantApi
     }
 
     /**
-     * Operation registrantsRegistrantIdPutAsyncWithHttpInfo
+     * Operation registrantsRegistrantIdPutAsyncWithHttpInfo.
      *
-     * 
+     *
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\RegistrantPersonalInfo $registrant_personal_info Registrants personal data to update (required)
@@ -1086,7 +1073,7 @@ class RegistrantApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -1107,7 +1094,7 @@ class RegistrantApi
     }
 
     /**
-     * Create request for operation 'registrantsRegistrantIdPut'
+     * Create request for operation 'registrantsRegistrantIdPut'.
      *
      * @param  string $registrant_id (required)
      * @param  \CollingMedia\Lasso\Model\RegistrantPersonalInfo $registrant_personal_info Registrants personal data to update (required)
@@ -1137,11 +1124,10 @@ class RegistrantApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($registrant_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'registrantId' . '}',
+                '{'.'registrantId'.'}',
                 ObjectSerializer::toPathValue($registrant_id),
                 $resourcePath
             );
@@ -1178,15 +1164,13 @@ class RegistrantApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -1211,16 +1195,17 @@ class RegistrantApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation registrantsSearchGet
+     * Operation registrantsSearchGet.
      *
      * Search registrants by name, email, phone, nickname, externalId, rating or creation date.
      *
@@ -1243,12 +1228,13 @@ class RegistrantApi
      */
     public function registrantsSearchGet($last_modified = null, $registered_after = null, $registered_before = null, $rating = null, $email = null, $phone = null, $nick_name = null, $name = null, $fuzzy = null, $external_id = null, $smart_search = null, $cursor = null)
     {
-        list($response) = $this->registrantsSearchGetWithHttpInfo($last_modified, $registered_after, $registered_before, $rating, $email, $phone, $nick_name, $name, $fuzzy, $external_id, $smart_search, $cursor);
+        [$response] = $this->registrantsSearchGetWithHttpInfo($last_modified, $registered_after, $registered_before, $rating, $email, $phone, $nick_name, $name, $fuzzy, $external_id, $smart_search, $cursor);
+
         return $response;
     }
 
     /**
-     * Operation registrantsSearchGetWithHttpInfo
+     * Operation registrantsSearchGetWithHttpInfo.
      *
      * Search registrants by name, email, phone, nickname, externalId, rating or creation date.
      *
@@ -1315,9 +1301,8 @@ class RegistrantApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1334,7 +1319,7 @@ class RegistrantApi
     }
 
     /**
-     * Operation registrantsSearchGetAsync
+     * Operation registrantsSearchGetAsync.
      *
      * Search registrants by name, email, phone, nickname, externalId, rating or creation date.
      *
@@ -1365,7 +1350,7 @@ class RegistrantApi
     }
 
     /**
-     * Operation registrantsSearchGetAsyncWithHttpInfo
+     * Operation registrantsSearchGetAsyncWithHttpInfo.
      *
      * Search registrants by name, email, phone, nickname, externalId, rating or creation date.
      *
@@ -1407,7 +1392,7 @@ class RegistrantApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -1428,7 +1413,7 @@ class RegistrantApi
     }
 
     /**
-     * Create request for operation 'registrantsSearchGet'
+     * Create request for operation 'registrantsSearchGet'.
      *
      * @param  string $last_modified Return only registrant modified after the specified date time, in ISO 8601 UTC format. (optional)
      * @param  \DateTime $registered_after Returns only registrants that were registered since the given date, in ISO 8601 UTC format. (optional)
@@ -1448,7 +1433,6 @@ class RegistrantApi
      */
     protected function registrantsSearchGetRequest($last_modified = null, $registered_after = null, $registered_before = null, $rating = null, $email = null, $phone = null, $nick_name = null, $name = null, $fuzzy = null, $external_id = null, $smart_search = null, $cursor = null)
     {
-
         $resourcePath = '/registrants/search';
         $formParams = [];
         $queryParams = [];
@@ -1505,7 +1489,6 @@ class RegistrantApi
             $queryParams['cursor'] = ObjectSerializer::toQueryValue($cursor);
         }
 
-
         // body params
         $_tempBody = null;
 
@@ -1534,15 +1517,13 @@ class RegistrantApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -1567,16 +1548,17 @@ class RegistrantApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
      *
      * @throws \RuntimeException on file opening failure
      * @return array of http client options
@@ -1586,8 +1568,8 @@ class RegistrantApi
         $options = [];
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            if (! $options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

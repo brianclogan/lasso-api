@@ -1,19 +1,17 @@
 <?php
 /**
  * InventoryApiTest
- * PHP version 7
+ * PHP version 7.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
 
 /**
@@ -22,128 +20,114 @@
  * Please update the test case below to test the endpoint.
  */
 
-
 namespace CollingMedia\Lasso;
 
 use PHPUnit\Framework\TestCase;
-use \CollingMedia\Lasso\Configuration;
-use \CollingMedia\Lasso\ApiException;
-use \CollingMedia\Lasso\ObjectSerializer;
 
 /**
- * InventoryApiTest Class Doc Comment
+ * InventoryApiTest Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 class InventoryApiTest extends TestCase
 {
-
     /**
-     * Setup before running any test cases
+     * Setup before running any test cases.
      */
     public static function setUpBeforeClass()
     {
     }
 
     /**
-     * Setup before running each test case
+     * Setup before running each test case.
      */
     public function setUp()
     {
     }
 
     /**
-     * Clean up after running each test case
+     * Clean up after running each test case.
      */
     public function tearDown()
     {
     }
 
     /**
-     * Clean up after running all test cases
+     * Clean up after running all test cases.
      */
     public static function tearDownAfterClass()
     {
     }
 
     /**
-     * Test case for inventoryGet
+     * Test case for inventoryGet.
      *
      * Returns a list of all inventories.
-     *
      */
     public function testInventoryGet()
     {
     }
 
     /**
-     * Test case for inventoryInventoryIdDelete
+     * Test case for inventoryInventoryIdDelete.
      *
      * Delete an inventory.
-     *
      */
     public function testInventoryInventoryIdDelete()
     {
     }
 
     /**
-     * Test case for inventoryInventoryIdGet
+     * Test case for inventoryInventoryIdGet.
      *
      * Get a single inventory.
-     *
      */
     public function testInventoryInventoryIdGet()
     {
     }
 
     /**
-     * Test case for inventoryInventoryIdPut
+     * Test case for inventoryInventoryIdPut.
      *
      * Update an inventory.
-     *
      */
     public function testInventoryInventoryIdPut()
     {
     }
 
     /**
-     * Test case for inventoryInventoryIdResetPost
+     * Test case for inventoryInventoryIdResetPost.
      *
      * Reset an inventory items. Deletes all associated data with the inventory item, e.g. pricing information, options and upgrades, deposits, etc..
-     *
      */
     public function testInventoryInventoryIdResetPost()
     {
     }
 
     /**
-     * Test case for inventoryInventoryIdSyncPut
+     * Test case for inventoryInventoryIdSyncPut.
      *
      * Sync an inventory.
-     *
      */
     public function testInventoryInventoryIdSyncPut()
     {
     }
 
     /**
-     * Test case for inventoryPost
+     * Test case for inventoryPost.
      *
      * Create an inventory.
-     *
      */
     public function testInventoryPost()
     {
     }
 
     /**
-     * Test case for inventorySearchGet
+     * Test case for inventorySearchGet.
      *
      * Search inventories by strataLot and inventoryNumber..
-     *
      */
     public function testInventorySearchGet()
     {

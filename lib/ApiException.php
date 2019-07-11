@@ -1,38 +1,32 @@
 <?php
 /**
  * ApiException
- * PHP version 7
+ * PHP version 7.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso;
 
-use \Exception;
+use Exception;
 
 /**
- * ApiException Class Doc Comment
+ * ApiException Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 class ApiException extends Exception
 {
-
     /**
      * The HTTP body of the server response either as Json or string.
      *
@@ -48,21 +42,21 @@ class ApiException extends Exception
     protected $responseHeaders;
 
     /**
-     * The deserialized response object
+     * The deserialized response object.
      *
-     * @var $responseObject;
+     * @var;
      */
     protected $responseObject;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string        $message         Error message
      * @param int           $code            HTTP status code
      * @param string[]|null $responseHeaders HTTP response header
      * @param mixed         $responseBody    HTTP decoded body of the server response either as \stdClass or string
      */
-    public function __construct($message = "", $code = 0, $responseHeaders = [], $responseBody = null)
+    public function __construct($message = '', $code = 0, $responseHeaders = [], $responseBody = null)
     {
         parent::__construct($message, $code);
         $this->responseHeaders = $responseHeaders;
@@ -70,7 +64,7 @@ class ApiException extends Exception
     }
 
     /**
-     * Gets the HTTP response header
+     * Gets the HTTP response header.
      *
      * @return string[]|null HTTP response header
      */
@@ -80,7 +74,7 @@ class ApiException extends Exception
     }
 
     /**
-     * Gets the HTTP body of the server response either as Json or string
+     * Gets the HTTP body of the server response either as Json or string.
      *
      * @return mixed HTTP body of the server response either as \stdClass or string
      */
@@ -90,7 +84,7 @@ class ApiException extends Exception
     }
 
     /**
-     * Sets the deseralized response object (during deserialization)
+     * Sets the deseralized response object (during deserialization).
      *
      * @param mixed $obj Deserialized response object
      *
@@ -102,7 +96,7 @@ class ApiException extends Exception
     }
 
     /**
-     * Gets the deseralized response object (during deserialization)
+     * Gets the deseralized response object (during deserialization).
      *
      * @return mixed the deserialized response object
      */

@@ -1,51 +1,47 @@
 <?php
 /**
- * RegistrantWrite
+ * RegistrantWrite.
  *
  * PHP version 7
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
 
-
-
 namespace CollingMedia\Lasso\Model;
-use \CollingMedia\Lasso\ObjectSerializer;
+
+use CollingMedia\Lasso\ObjectSerializer;
 
 /**
- * RegistrantWrite Class Doc Comment
+ * RegistrantWrite Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
-class RegistrantWrite extends Registrant 
+class RegistrantWrite extends Registrant
 {
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'RegistrantWrite';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'emails' => '\CollingMedia\Lasso\Model\EmailWrite[]',
         'phones' => '\CollingMedia\Lasso\Model\PhoneWrite[]',
@@ -56,14 +52,14 @@ class RegistrantWrite extends Registrant
         'thank_you_email_template_id' => 'string',
         'send_opt_in_email' => 'bool',
         'rotation_id' => 'string',
-        '_links' => '\CollingMedia\Lasso\Model\RegistrantWriteLinks'
+        '_links' => '\CollingMedia\Lasso\Model\RegistrantWriteLinks',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'emails' => null,
         'phones' => null,
@@ -74,11 +70,11 @@ class RegistrantWrite extends Registrant
         'thank_you_email_template_id' => null,
         'send_opt_in_email' => null,
         'rotation_id' => null,
-        '_links' => null
+        '_links' => null,
     ];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
+     * Array of property to type mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -88,7 +84,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
+     * Array of property to format mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -99,7 +95,7 @@ class RegistrantWrite extends Registrant
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
@@ -113,11 +109,11 @@ class RegistrantWrite extends Registrant
         'thank_you_email_template_id' => 'thankYouEmailTemplateId',
         'send_opt_in_email' => 'sendOptInEmail',
         'rotation_id' => 'rotationId',
-        '_links' => '_links'
+        '_links' => '_links',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -131,11 +127,11 @@ class RegistrantWrite extends Registrant
         'thank_you_email_template_id' => 'setThankYouEmailTemplateId',
         'send_opt_in_email' => 'setSendOptInEmail',
         'rotation_id' => 'setRotationId',
-        '_links' => 'setLinks'
+        '_links' => 'setLinks',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -149,12 +145,12 @@ class RegistrantWrite extends Registrant
         'thank_you_email_template_id' => 'getThankYouEmailTemplateId',
         'send_opt_in_email' => 'getSendOptInEmail',
         'rotation_id' => 'getRotationId',
-        '_links' => 'getLinks'
+        '_links' => 'getLinks',
     ];
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @return array
      */
@@ -164,7 +160,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @return array
      */
@@ -174,7 +170,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @return array
      */
@@ -193,13 +189,8 @@ class RegistrantWrite extends Registrant
         return self::$swaggerModelName;
     }
 
-    
-
-    
-
-
     /**
-     * Constructor
+     * Constructor.
      *
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
@@ -234,7 +225,7 @@ class RegistrantWrite extends Registrant
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
@@ -243,9 +234,8 @@ class RegistrantWrite extends Registrant
         return count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
-     * Gets emails
+     * Gets emails.
      *
      * @return \CollingMedia\Lasso\Model\EmailWrite[]
      */
@@ -255,7 +245,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Sets emails
+     * Sets emails.
      *
      * @param \CollingMedia\Lasso\Model\EmailWrite[] $emails emails
      *
@@ -269,7 +259,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Gets phones
+     * Gets phones.
      *
      * @return \CollingMedia\Lasso\Model\PhoneWrite[]
      */
@@ -279,7 +269,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Sets phones
+     * Sets phones.
      *
      * @param \CollingMedia\Lasso\Model\PhoneWrite[] $phones phones
      *
@@ -293,7 +283,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Gets addresses
+     * Gets addresses.
      *
      * @return \CollingMedia\Lasso\Model\AddressWrite[]
      */
@@ -303,7 +293,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Sets addresses
+     * Sets addresses.
      *
      * @param \CollingMedia\Lasso\Model\AddressWrite[] $addresses addresses
      *
@@ -317,7 +307,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Gets history
+     * Gets history.
      *
      * @return \CollingMedia\Lasso\Model\HistoryWrite[]
      */
@@ -327,7 +317,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Sets history
+     * Sets history.
      *
      * @param \CollingMedia\Lasso\Model\HistoryWrite[] $history history
      *
@@ -341,7 +331,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Gets notes
+     * Gets notes.
      *
      * @return \CollingMedia\Lasso\Model\RegistrantNoteWrite[]
      */
@@ -351,7 +341,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Sets notes
+     * Sets notes.
      *
      * @param \CollingMedia\Lasso\Model\RegistrantNoteWrite[] $notes notes
      *
@@ -365,7 +355,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Gets send_sales_rep_assignment_notification
+     * Gets send_sales_rep_assignment_notification.
      *
      * @return bool
      */
@@ -375,7 +365,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Sets send_sales_rep_assignment_notification
+     * Sets send_sales_rep_assignment_notification.
      *
      * @param bool $send_sales_rep_assignment_notification send_sales_rep_assignment_notification
      *
@@ -389,7 +379,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Gets thank_you_email_template_id
+     * Gets thank_you_email_template_id.
      *
      * @return string
      */
@@ -399,7 +389,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Sets thank_you_email_template_id
+     * Sets thank_you_email_template_id.
      *
      * @param string $thank_you_email_template_id thank_you_email_template_id
      *
@@ -413,7 +403,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Gets send_opt_in_email
+     * Gets send_opt_in_email.
      *
      * @return bool
      */
@@ -423,7 +413,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Sets send_opt_in_email
+     * Sets send_opt_in_email.
      *
      * @param bool $send_opt_in_email send_opt_in_email
      *
@@ -437,7 +427,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Gets rotation_id
+     * Gets rotation_id.
      *
      * @return string
      */
@@ -447,7 +437,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Sets rotation_id
+     * Sets rotation_id.
      *
      * @param string $rotation_id Assign a sales rep from next in rotation. assignedSalesReps override rotationId
      *
@@ -461,7 +451,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Gets _links
+     * Gets _links.
      *
      * @return \CollingMedia\Lasso\Model\RegistrantWriteLinks
      */
@@ -471,7 +461,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Sets _links
+     * Sets _links.
      *
      * @param \CollingMedia\Lasso\Model\RegistrantWriteLinks $_links _links
      *
@@ -483,12 +473,13 @@ class RegistrantWrite extends Registrant
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -498,7 +489,7 @@ class RegistrantWrite extends Registrant
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return mixed
      */
@@ -510,7 +501,7 @@ class RegistrantWrite extends Registrant
     /**
      * Sets value based on offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      * @param mixed   $value  Value to be set
      *
      * @return void
@@ -527,7 +518,7 @@ class RegistrantWrite extends Registrant
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return void
      */
@@ -537,7 +528,7 @@ class RegistrantWrite extends Registrant
     }
 
     /**
-     * Gets the string presentation of the object
+     * Gets the string presentation of the object.
      *
      * @return string
      */
@@ -553,5 +544,3 @@ class RegistrantWrite extends Registrant
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-

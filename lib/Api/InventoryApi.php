@@ -1,41 +1,36 @@
 <?php
 /**
  * InventoryApi
- * PHP version 7
+ * PHP version 7.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso\Api;
 
 use GuzzleHttp\Client;
-use GuzzleHttp\ClientInterface;
-use GuzzleHttp\Exception\RequestException;
-use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
+use GuzzleHttp\ClientInterface;
 use CollingMedia\Lasso\ApiException;
+use GuzzleHttp\Psr7\MultipartStream;
 use CollingMedia\Lasso\Configuration;
 use CollingMedia\Lasso\HeaderSelector;
 use CollingMedia\Lasso\ObjectSerializer;
+use GuzzleHttp\Exception\RequestException;
 
 /**
- * InventoryApi Class Doc Comment
+ * InventoryApi Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -80,7 +75,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventoryGet
+     * Operation inventoryGet.
      *
      * Returns a list of all inventories
      *
@@ -91,12 +86,13 @@ class InventoryApi
      */
     public function inventoryGet()
     {
-        list($response) = $this->inventoryGetWithHttpInfo();
+        [$response] = $this->inventoryGetWithHttpInfo();
+
         return $response;
     }
 
     /**
-     * Operation inventoryGetWithHttpInfo
+     * Operation inventoryGetWithHttpInfo.
      *
      * Returns a list of all inventories
      *
@@ -151,9 +147,8 @@ class InventoryApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -170,7 +165,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventoryGetAsync
+     * Operation inventoryGetAsync.
      *
      * Returns a list of all inventories
      *
@@ -189,7 +184,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventoryGetAsyncWithHttpInfo
+     * Operation inventoryGetAsyncWithHttpInfo.
      *
      * Returns a list of all inventories
      *
@@ -219,7 +214,7 @@ class InventoryApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -240,7 +235,7 @@ class InventoryApi
     }
 
     /**
-     * Create request for operation 'inventoryGet'
+     * Create request for operation 'inventoryGet'.
      *
      *
      * @throws \InvalidArgumentException
@@ -248,15 +243,12 @@ class InventoryApi
      */
     protected function inventoryGetRequest()
     {
-
         $resourcePath = '/inventory';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // body params
         $_tempBody = null;
@@ -286,15 +278,13 @@ class InventoryApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -319,16 +309,17 @@ class InventoryApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation inventoryInventoryIdDelete
+     * Operation inventoryInventoryIdDelete.
      *
      * Delete an inventory
      *
@@ -344,7 +335,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventoryInventoryIdDeleteWithHttpInfo
+     * Operation inventoryInventoryIdDeleteWithHttpInfo.
      *
      * Delete an inventory
      *
@@ -388,7 +379,6 @@ class InventoryApi
             }
 
             return [null, $statusCode, $response->getHeaders()];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 403:
@@ -413,7 +403,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventoryInventoryIdDeleteAsync
+     * Operation inventoryInventoryIdDeleteAsync.
      *
      * Delete an inventory
      *
@@ -433,7 +423,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventoryInventoryIdDeleteAsyncWithHttpInfo
+     * Operation inventoryInventoryIdDeleteAsyncWithHttpInfo.
      *
      * Delete an inventory
      *
@@ -471,7 +461,7 @@ class InventoryApi
     }
 
     /**
-     * Create request for operation 'inventoryInventoryIdDelete'
+     * Create request for operation 'inventoryInventoryIdDelete'.
      *
      * @param  string $inventory_id /inventory/123 (required)
      *
@@ -494,11 +484,10 @@ class InventoryApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($inventory_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'inventoryId' . '}',
+                '{'.'inventoryId'.'}',
                 ObjectSerializer::toPathValue($inventory_id),
                 $resourcePath
             );
@@ -532,15 +521,13 @@ class InventoryApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -565,16 +552,17 @@ class InventoryApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'DELETE',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation inventoryInventoryIdGet
+     * Operation inventoryInventoryIdGet.
      *
      * Get a single inventory
      *
@@ -586,12 +574,13 @@ class InventoryApi
      */
     public function inventoryInventoryIdGet($inventory_id)
     {
-        list($response) = $this->inventoryInventoryIdGetWithHttpInfo($inventory_id);
+        [$response] = $this->inventoryInventoryIdGetWithHttpInfo($inventory_id);
+
         return $response;
     }
 
     /**
-     * Operation inventoryInventoryIdGetWithHttpInfo
+     * Operation inventoryInventoryIdGetWithHttpInfo.
      *
      * Get a single inventory
      *
@@ -647,9 +636,8 @@ class InventoryApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -682,7 +670,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventoryInventoryIdGetAsync
+     * Operation inventoryInventoryIdGetAsync.
      *
      * Get a single inventory
      *
@@ -702,7 +690,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventoryInventoryIdGetAsyncWithHttpInfo
+     * Operation inventoryInventoryIdGetAsyncWithHttpInfo.
      *
      * Get a single inventory
      *
@@ -733,7 +721,7 @@ class InventoryApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -754,7 +742,7 @@ class InventoryApi
     }
 
     /**
-     * Create request for operation 'inventoryInventoryIdGet'
+     * Create request for operation 'inventoryInventoryIdGet'.
      *
      * @param  string $inventory_id /inventory/123 (required)
      *
@@ -777,11 +765,10 @@ class InventoryApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($inventory_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'inventoryId' . '}',
+                '{'.'inventoryId'.'}',
                 ObjectSerializer::toPathValue($inventory_id),
                 $resourcePath
             );
@@ -815,15 +802,13 @@ class InventoryApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -848,16 +833,17 @@ class InventoryApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation inventoryInventoryIdPut
+     * Operation inventoryInventoryIdPut.
      *
      * Update an inventory
      *
@@ -870,12 +856,13 @@ class InventoryApi
      */
     public function inventoryInventoryIdPut($inventory_id, $inventory = null)
     {
-        list($response) = $this->inventoryInventoryIdPutWithHttpInfo($inventory_id, $inventory);
+        [$response] = $this->inventoryInventoryIdPutWithHttpInfo($inventory_id, $inventory);
+
         return $response;
     }
 
     /**
-     * Operation inventoryInventoryIdPutWithHttpInfo
+     * Operation inventoryInventoryIdPutWithHttpInfo.
      *
      * Update an inventory
      *
@@ -932,9 +919,8 @@ class InventoryApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -967,7 +953,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventoryInventoryIdPutAsync
+     * Operation inventoryInventoryIdPutAsync.
      *
      * Update an inventory
      *
@@ -988,7 +974,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventoryInventoryIdPutAsyncWithHttpInfo
+     * Operation inventoryInventoryIdPutAsyncWithHttpInfo.
      *
      * Update an inventory
      *
@@ -1020,7 +1006,7 @@ class InventoryApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -1041,7 +1027,7 @@ class InventoryApi
     }
 
     /**
-     * Create request for operation 'inventoryInventoryIdPut'
+     * Create request for operation 'inventoryInventoryIdPut'.
      *
      * @param  string $inventory_id /inventory/123 (required)
      * @param  \CollingMedia\Lasso\Model\InventoryUpdate $inventory (optional)
@@ -1065,11 +1051,10 @@ class InventoryApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($inventory_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'inventoryId' . '}',
+                '{'.'inventoryId'.'}',
                 ObjectSerializer::toPathValue($inventory_id),
                 $resourcePath
             );
@@ -1106,15 +1091,13 @@ class InventoryApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -1139,16 +1122,17 @@ class InventoryApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation inventoryInventoryIdResetPost
+     * Operation inventoryInventoryIdResetPost.
      *
      * Reset an inventory items. Deletes all associated data with the inventory item, e.g. pricing information, options and upgrades, deposits, etc.
      *
@@ -1164,7 +1148,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventoryInventoryIdResetPostWithHttpInfo
+     * Operation inventoryInventoryIdResetPostWithHttpInfo.
      *
      * Reset an inventory items. Deletes all associated data with the inventory item, e.g. pricing information, options and upgrades, deposits, etc.
      *
@@ -1208,7 +1192,6 @@ class InventoryApi
             }
 
             return [null, $statusCode, $response->getHeaders()];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 403:
@@ -1233,7 +1216,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventoryInventoryIdResetPostAsync
+     * Operation inventoryInventoryIdResetPostAsync.
      *
      * Reset an inventory items. Deletes all associated data with the inventory item, e.g. pricing information, options and upgrades, deposits, etc.
      *
@@ -1253,7 +1236,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventoryInventoryIdResetPostAsyncWithHttpInfo
+     * Operation inventoryInventoryIdResetPostAsyncWithHttpInfo.
      *
      * Reset an inventory items. Deletes all associated data with the inventory item, e.g. pricing information, options and upgrades, deposits, etc.
      *
@@ -1291,7 +1274,7 @@ class InventoryApi
     }
 
     /**
-     * Create request for operation 'inventoryInventoryIdResetPost'
+     * Create request for operation 'inventoryInventoryIdResetPost'.
      *
      * @param  string $inventory_id /inventory/123/reset (required)
      *
@@ -1314,11 +1297,10 @@ class InventoryApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($inventory_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'inventoryId' . '}',
+                '{'.'inventoryId'.'}',
                 ObjectSerializer::toPathValue($inventory_id),
                 $resourcePath
             );
@@ -1352,15 +1334,13 @@ class InventoryApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -1385,16 +1365,17 @@ class InventoryApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation inventoryInventoryIdSyncPut
+     * Operation inventoryInventoryIdSyncPut.
      *
      * Sync an inventory
      *
@@ -1407,12 +1388,13 @@ class InventoryApi
      */
     public function inventoryInventoryIdSyncPut($inventory_id, $inventory = null)
     {
-        list($response) = $this->inventoryInventoryIdSyncPutWithHttpInfo($inventory_id, $inventory);
+        [$response] = $this->inventoryInventoryIdSyncPutWithHttpInfo($inventory_id, $inventory);
+
         return $response;
     }
 
     /**
-     * Operation inventoryInventoryIdSyncPutWithHttpInfo
+     * Operation inventoryInventoryIdSyncPutWithHttpInfo.
      *
      * Sync an inventory
      *
@@ -1469,9 +1451,8 @@ class InventoryApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -1528,7 +1509,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventoryInventoryIdSyncPutAsync
+     * Operation inventoryInventoryIdSyncPutAsync.
      *
      * Sync an inventory
      *
@@ -1549,7 +1530,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventoryInventoryIdSyncPutAsyncWithHttpInfo
+     * Operation inventoryInventoryIdSyncPutAsyncWithHttpInfo.
      *
      * Sync an inventory
      *
@@ -1581,7 +1562,7 @@ class InventoryApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -1602,7 +1583,7 @@ class InventoryApi
     }
 
     /**
-     * Create request for operation 'inventoryInventoryIdSyncPut'
+     * Create request for operation 'inventoryInventoryIdSyncPut'.
      *
      * @param  string $inventory_id /inventory/123/sync (required)
      * @param  \CollingMedia\Lasso\Model\InventorySync $inventory (optional)
@@ -1626,11 +1607,10 @@ class InventoryApi
         $httpBody = '';
         $multipart = false;
 
-
         // path params
         if ($inventory_id !== null) {
             $resourcePath = str_replace(
-                '{' . 'inventoryId' . '}',
+                '{'.'inventoryId'.'}',
                 ObjectSerializer::toPathValue($inventory_id),
                 $resourcePath
             );
@@ -1667,15 +1647,13 @@ class InventoryApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -1700,16 +1678,17 @@ class InventoryApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'PUT',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation inventoryPost
+     * Operation inventoryPost.
      *
      * Create an inventory
      *
@@ -1721,12 +1700,13 @@ class InventoryApi
      */
     public function inventoryPost($inventory = null)
     {
-        list($response) = $this->inventoryPostWithHttpInfo($inventory);
+        [$response] = $this->inventoryPostWithHttpInfo($inventory);
+
         return $response;
     }
 
     /**
-     * Operation inventoryPostWithHttpInfo
+     * Operation inventoryPostWithHttpInfo.
      *
      * Create an inventory
      *
@@ -1782,9 +1762,8 @@ class InventoryApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 201:
@@ -1817,7 +1796,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventoryPostAsync
+     * Operation inventoryPostAsync.
      *
      * Create an inventory
      *
@@ -1837,7 +1816,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventoryPostAsyncWithHttpInfo
+     * Operation inventoryPostAsyncWithHttpInfo.
      *
      * Create an inventory
      *
@@ -1868,7 +1847,7 @@ class InventoryApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -1889,7 +1868,7 @@ class InventoryApi
     }
 
     /**
-     * Create request for operation 'inventoryPost'
+     * Create request for operation 'inventoryPost'.
      *
      * @param  \CollingMedia\Lasso\Model\InventoryCreate $inventory (optional)
      *
@@ -1898,15 +1877,12 @@ class InventoryApi
      */
     protected function inventoryPostRequest($inventory = null)
     {
-
         $resourcePath = '/inventory';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
         $httpBody = '';
         $multipart = false;
-
-
 
         // body params
         $_tempBody = null;
@@ -1939,15 +1915,13 @@ class InventoryApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -1972,16 +1946,17 @@ class InventoryApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Operation inventorySearchGet
+     * Operation inventorySearchGet.
      *
      * Search inventories by strataLot and inventoryNumber.
      *
@@ -1994,12 +1969,13 @@ class InventoryApi
      */
     public function inventorySearchGet($strata_lot = null, $inventory_number = null)
     {
-        list($response) = $this->inventorySearchGetWithHttpInfo($strata_lot, $inventory_number);
+        [$response] = $this->inventorySearchGetWithHttpInfo($strata_lot, $inventory_number);
+
         return $response;
     }
 
     /**
-     * Operation inventorySearchGetWithHttpInfo
+     * Operation inventorySearchGetWithHttpInfo.
      *
      * Search inventories by strataLot and inventoryNumber.
      *
@@ -2056,9 +2032,8 @@ class InventoryApi
             return [
                 ObjectSerializer::deserialize($content, $returnType, []),
                 $response->getStatusCode(),
-                $response->getHeaders()
+                $response->getHeaders(),
             ];
-
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
@@ -2075,7 +2050,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventorySearchGetAsync
+     * Operation inventorySearchGetAsync.
      *
      * Search inventories by strataLot and inventoryNumber.
      *
@@ -2096,7 +2071,7 @@ class InventoryApi
     }
 
     /**
-     * Operation inventorySearchGetAsyncWithHttpInfo
+     * Operation inventorySearchGetAsyncWithHttpInfo.
      *
      * Search inventories by strataLot and inventoryNumber.
      *
@@ -2128,7 +2103,7 @@ class InventoryApi
                     return [
                         ObjectSerializer::deserialize($content, $returnType, []),
                         $response->getStatusCode(),
-                        $response->getHeaders()
+                        $response->getHeaders(),
                     ];
                 },
                 function ($exception) {
@@ -2149,7 +2124,7 @@ class InventoryApi
     }
 
     /**
-     * Create request for operation 'inventorySearchGet'
+     * Create request for operation 'inventorySearchGet'.
      *
      * @param  string $strata_lot /inventory/search?strataLot&#x3D;123 (optional)
      * @param  string $inventory_number /inventory/search?inventoryNumber&#x3D;123 (optional)
@@ -2159,7 +2134,6 @@ class InventoryApi
      */
     protected function inventorySearchGetRequest($strata_lot = null, $inventory_number = null)
     {
-
         $resourcePath = '/inventory/search';
         $formParams = [];
         $queryParams = [];
@@ -2175,7 +2149,6 @@ class InventoryApi
         if ($inventory_number !== null) {
             $queryParams['inventoryNumber'] = ObjectSerializer::toQueryValue($inventory_number);
         }
-
 
         // body params
         $_tempBody = null;
@@ -2205,15 +2178,13 @@ class InventoryApi
                 foreach ($formParams as $formParamName => $formParamValue) {
                     $multipartContents[] = [
                         'name' => $formParamName,
-                        'contents' => $formParamValue
+                        'contents' => $formParamValue,
                     ];
                 }
                 // for HTTP post (form)
                 $httpBody = new MultipartStream($multipartContents);
-
             } elseif ($headers['Content-Type'] === 'application/json') {
                 $httpBody = \GuzzleHttp\json_encode($formParams);
-
             } else {
                 // for HTTP post (form)
                 $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
@@ -2238,16 +2209,17 @@ class InventoryApi
         );
 
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
+
         return new Request(
             'GET',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $this->config->getHost().$resourcePath.($query ? "?{$query}" : ''),
             $headers,
             $httpBody
         );
     }
 
     /**
-     * Create http client option
+     * Create http client option.
      *
      * @throws \RuntimeException on file opening failure
      * @return array of http client options
@@ -2257,8 +2229,8 @@ class InventoryApi
         $options = [];
         if ($this->config->getDebug()) {
             $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
-            if (!$options[RequestOptions::DEBUG]) {
-                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            if (! $options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: '.$this->config->getDebugFile());
             }
         }
 

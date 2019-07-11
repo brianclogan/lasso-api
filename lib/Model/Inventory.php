@@ -1,34 +1,29 @@
 <?php
 /**
- * Inventory
+ * Inventory.
  *
  * PHP version 7
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
 
 /**
- * Lasso API
+ * Lasso API.
  *
  * Manage Registrant and Inventory data within Lasso CRM.  Authorization header with a Bearer JWT api key token is required for all requests. API keys are project/location based, and can be obtained from your business contact with Lasso Data Systems. In the future, Project Admin's will be able to generate their own api keys from the Lasso CRM web application.  To try it out in swagger: - Select the `Authorize` button and place your api key in the textbox - Ensure that the api key is prefixed with `Bearer` including a space separating `Bearer` from the api key - Go to the route you want to try out in the swagger definition - Select `Try it out` - Input any required fields, query params, and request payload - Select `Execute`  Alternatively, you can try it on your command line with curl, for example: `curl -X GET \"https://api.lassocrm.com/v1/registrants/123456\" -H \"accept: application/json\" -H \"Authorization: Bearer ***apikey***\"`
- *
  */
-
-
 
 namespace CollingMedia\Lasso\Model;
 
-use \ArrayAccess;
-use \CollingMedia\Lasso\ObjectSerializer;
+use ArrayAccess;
+use CollingMedia\Lasso\ObjectSerializer;
 
 /**
- * Inventory Class Doc Comment
+ * Inventory Class Doc Comment.
  *
  * @category Class
- * @package CollingMedia\Lasso
  * @author   Brian Logan
  * @link     https://github.com/colling-media/lasso-api
  */
@@ -37,17 +32,17 @@ class Inventory implements ModelInterface, ArrayAccess
     const DISCRIMINATOR = null;
 
     /**
-      * The original name of the model.
-      *
-      * @var string
-      */
+     * The original name of the model.
+     *
+     * @var string
+     */
     protected static $swaggerModelName = 'Inventory';
 
     /**
-      * Array of property to type mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to type mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerTypes = [
         'status_overwrite' => 'string',
         'plan' => 'string',
@@ -63,14 +58,14 @@ class Inventory implements ModelInterface, ArrayAccess
         'definition' => 'string',
         'dates' => '\CollingMedia\Lasso\Model\Dates',
         'pricing' => '\CollingMedia\Lasso\Model\Pricing',
-        '_links' => '\CollingMedia\Lasso\Model\InventoryLinks'
+        '_links' => '\CollingMedia\Lasso\Model\InventoryLinks',
     ];
 
     /**
-      * Array of property to format mappings. Used for (de)serialization
-      *
-      * @var string[]
-      */
+     * Array of property to format mappings. Used for (de)serialization.
+     *
+     * @var string[]
+     */
     protected static $swaggerFormats = [
         'status_overwrite' => null,
         'plan' => null,
@@ -86,11 +81,11 @@ class Inventory implements ModelInterface, ArrayAccess
         'definition' => null,
         'dates' => null,
         'pricing' => null,
-        '_links' => null
+        '_links' => null,
     ];
 
     /**
-     * Array of property to type mappings. Used for (de)serialization
+     * Array of property to type mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -100,7 +95,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of property to format mappings. Used for (de)serialization
+     * Array of property to format mappings. Used for (de)serialization.
      *
      * @return array
      */
@@ -111,7 +106,7 @@ class Inventory implements ModelInterface, ArrayAccess
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @var string[]
      */
@@ -130,11 +125,11 @@ class Inventory implements ModelInterface, ArrayAccess
         'definition' => 'definition',
         'dates' => 'dates',
         'pricing' => 'pricing',
-        '_links' => '_links'
+        '_links' => '_links',
     ];
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @var string[]
      */
@@ -153,11 +148,11 @@ class Inventory implements ModelInterface, ArrayAccess
         'definition' => 'setDefinition',
         'dates' => 'setDates',
         'pricing' => 'setPricing',
-        '_links' => 'setLinks'
+        '_links' => 'setLinks',
     ];
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @var string[]
      */
@@ -176,12 +171,12 @@ class Inventory implements ModelInterface, ArrayAccess
         'definition' => 'getDefinition',
         'dates' => 'getDates',
         'pricing' => 'getPricing',
-        '_links' => 'getLinks'
+        '_links' => 'getLinks',
     ];
 
     /**
      * Array of attributes where the key is the local name,
-     * and the value is the original name
+     * and the value is the original name.
      *
      * @return array
      */
@@ -191,7 +186,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of attributes to setter functions (for deserialization of responses)
+     * Array of attributes to setter functions (for deserialization of responses).
      *
      * @return array
      */
@@ -201,7 +196,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Array of attributes to getter functions (for serialization of requests)
+     * Array of attributes to getter functions (for serialization of requests).
      *
      * @return array
      */
@@ -232,11 +227,9 @@ class Inventory implements ModelInterface, ArrayAccess
     const DEFINITION_TOWNHOME = 'Townhome';
     const DEFINITION_LOT = 'Lot';
     const DEFINITION_HOMESITE = 'Homesite';
-    
 
-    
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
      *
      * @return string[]
      */
@@ -253,9 +246,9 @@ class Inventory implements ModelInterface, ArrayAccess
             self::STATUS_OVERWRITE_CLOSED,
         ];
     }
-    
+
     /**
-     * Gets allowable values of the enum
+     * Gets allowable values of the enum.
      *
      * @return string[]
      */
@@ -268,17 +261,16 @@ class Inventory implements ModelInterface, ArrayAccess
             self::DEFINITION_HOMESITE,
         ];
     }
-    
 
     /**
-     * Associative array for storing property values
+     * Associative array for storing property values.
      *
      * @var mixed[]
      */
     protected $container = [];
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param mixed[] $data Associated array of property values
      *                      initializing the model
@@ -312,7 +304,7 @@ class Inventory implements ModelInterface, ArrayAccess
         $invalidProperties = [];
 
         $allowedValues = $this->getStatusOverwriteAllowableValues();
-        if (!is_null($this->container['status_overwrite']) && !in_array($this->container['status_overwrite'], $allowedValues, true)) {
+        if (! is_null($this->container['status_overwrite']) && ! in_array($this->container['status_overwrite'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'status_overwrite', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -320,7 +312,7 @@ class Inventory implements ModelInterface, ArrayAccess
         }
 
         $allowedValues = $this->getDefinitionAllowableValues();
-        if (!is_null($this->container['definition']) && !in_array($this->container['definition'], $allowedValues, true)) {
+        if (! is_null($this->container['definition']) && ! in_array($this->container['definition'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
                 "invalid value for 'definition', must be one of '%s'",
                 implode("', '", $allowedValues)
@@ -332,7 +324,7 @@ class Inventory implements ModelInterface, ArrayAccess
 
     /**
      * Validate all the properties in the model
-     * return true if all passed
+     * return true if all passed.
      *
      * @return bool True if all properties are valid
      */
@@ -341,9 +333,8 @@ class Inventory implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
-
     /**
-     * Gets status_overwrite
+     * Gets status_overwrite.
      *
      * @return string
      */
@@ -353,7 +344,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets status_overwrite
+     * Sets status_overwrite.
      *
      * @param string $status_overwrite Current status of inventory. Will default to existing value if not provided.
      *
@@ -362,7 +353,7 @@ class Inventory implements ModelInterface, ArrayAccess
     public function setStatusOverwrite($status_overwrite)
     {
         $allowedValues = $this->getStatusOverwriteAllowableValues();
-        if (!is_null($status_overwrite) && !in_array($status_overwrite, $allowedValues, true)) {
+        if (! is_null($status_overwrite) && ! in_array($status_overwrite, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'status_overwrite', must be one of '%s'",
@@ -376,7 +367,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets plan
+     * Gets plan.
      *
      * @return string
      */
@@ -386,7 +377,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets plan
+     * Sets plan.
      *
      * @param string $plan This field has to be set up in Lasso. It is matched to an existing option via the name. If no existing option is found, a new one is created. Will default to existing value if not provided.
      *
@@ -400,7 +391,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets square_footage
+     * Gets square_footage.
      *
      * @return float
      */
@@ -410,7 +401,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets square_footage
+     * Sets square_footage.
      *
      * @param float $square_footage Will default to existing value if not provided.
      *
@@ -424,7 +415,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets patio_square_footage
+     * Gets patio_square_footage.
      *
      * @return float
      */
@@ -434,7 +425,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets patio_square_footage
+     * Sets patio_square_footage.
      *
      * @param float $patio_square_footage Will default to existing value if not provided.
      *
@@ -448,7 +439,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets color_scheme
+     * Gets color_scheme.
      *
      * @return string
      */
@@ -458,7 +449,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets color_scheme
+     * Sets color_scheme.
      *
      * @param string $color_scheme This field has to be set up in Lasso. It is matched to an existing option via the name. If no existing option is found, a new one is created. Will default to existing value if not provided.
      *
@@ -472,7 +463,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets maintenance_fee
+     * Gets maintenance_fee.
      *
      * @return float
      */
@@ -482,7 +473,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets maintenance_fee
+     * Sets maintenance_fee.
      *
      * @param float $maintenance_fee Will default to existing value if not provided.
      *
@@ -496,7 +487,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets floor
+     * Gets floor.
      *
      * @return float
      */
@@ -506,7 +497,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets floor
+     * Sets floor.
      *
      * @param float $floor Will default to existing value if not provided.
      *
@@ -520,7 +511,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets bedrooms
+     * Gets bedrooms.
      *
      * @return string
      */
@@ -530,7 +521,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets bedrooms
+     * Sets bedrooms.
      *
      * @param string $bedrooms This field has to be set up in Lasso. It is matched to an existing option via the name. If no existing option is found, a new one is created. Will default to existing value if not provided.
      *
@@ -544,7 +535,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets bathrooms
+     * Gets bathrooms.
      *
      * @return string
      */
@@ -554,7 +545,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets bathrooms
+     * Sets bathrooms.
      *
      * @param string $bathrooms Will default to existing value if not provided.
      *
@@ -568,7 +559,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets direction
+     * Gets direction.
      *
      * @return string
      */
@@ -578,7 +569,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets direction
+     * Sets direction.
      *
      * @param string $direction This field has to be set up in Lasso. It is matched to an existing option via the name. If no existing option is found, a new one is created. Will default to existing value if not provided.
      *
@@ -592,7 +583,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets exposure
+     * Gets exposure.
      *
      * @return string
      */
@@ -602,7 +593,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets exposure
+     * Sets exposure.
      *
      * @param string $exposure This field has to be set up in Lasso. It is matched to an existing option via the name. If no existing option is found, a new one is created. Will default to existing value if not provided.
      *
@@ -616,7 +607,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets definition
+     * Gets definition.
      *
      * @return string
      */
@@ -626,7 +617,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets definition
+     * Sets definition.
      *
      * @param string $definition Will default to existing value if not provided.
      *
@@ -635,7 +626,7 @@ class Inventory implements ModelInterface, ArrayAccess
     public function setDefinition($definition)
     {
         $allowedValues = $this->getDefinitionAllowableValues();
-        if (!is_null($definition) && !in_array($definition, $allowedValues, true)) {
+        if (! is_null($definition) && ! in_array($definition, $allowedValues, true)) {
             throw new \InvalidArgumentException(
                 sprintf(
                     "Invalid value for 'definition', must be one of '%s'",
@@ -649,7 +640,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets dates
+     * Gets dates.
      *
      * @return \CollingMedia\Lasso\Model\Dates
      */
@@ -659,7 +650,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets dates
+     * Sets dates.
      *
      * @param \CollingMedia\Lasso\Model\Dates $dates dates
      *
@@ -673,7 +664,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets pricing
+     * Gets pricing.
      *
      * @return \CollingMedia\Lasso\Model\Pricing
      */
@@ -683,7 +674,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets pricing
+     * Sets pricing.
      *
      * @param \CollingMedia\Lasso\Model\Pricing $pricing pricing
      *
@@ -697,7 +688,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets _links
+     * Gets _links.
      *
      * @return \CollingMedia\Lasso\Model\InventoryLinks
      */
@@ -707,7 +698,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Sets _links
+     * Sets _links.
      *
      * @param \CollingMedia\Lasso\Model\InventoryLinks $_links _links
      *
@@ -719,12 +710,13 @@ class Inventory implements ModelInterface, ArrayAccess
 
         return $this;
     }
+
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
-     * @return boolean
+     * @return bool
      */
     public function offsetExists($offset)
     {
@@ -734,7 +726,7 @@ class Inventory implements ModelInterface, ArrayAccess
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return mixed
      */
@@ -746,7 +738,7 @@ class Inventory implements ModelInterface, ArrayAccess
     /**
      * Sets value based on offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      * @param mixed   $value  Value to be set
      *
      * @return void
@@ -763,7 +755,7 @@ class Inventory implements ModelInterface, ArrayAccess
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
+     * @param int $offset Offset
      *
      * @return void
      */
@@ -773,7 +765,7 @@ class Inventory implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets the string presentation of the object
+     * Gets the string presentation of the object.
      *
      * @return string
      */
@@ -789,5 +781,3 @@ class Inventory implements ModelInterface, ArrayAccess
         return json_encode(ObjectSerializer::sanitizeForSerialization($this));
     }
 }
-
-
