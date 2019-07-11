@@ -23,7 +23,9 @@
  * Please update the test case below to test the model.
  */
 
-TestCase
+namespace CollingMedia\Lasso;
+
+use PHPUnit\Framework\TestCase;
 
 /**
  * RegistrantNoteReadTest Class Doc Comment
